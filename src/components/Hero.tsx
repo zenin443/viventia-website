@@ -4,6 +4,9 @@ import { motion } from "framer-motion";
 import type { Variants } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { viewportOnce } from "@/lib/animations";
+import { useSpotlight } from "@/lib/useSpotlight";
+import SpotlightWordmark from "@/components/SpotlightWordmark";
+import HeroDiamond from "@/components/HeroDiamond";
 
 const EASE: [number, number, number, number] = [0.4, 0, 0.2, 1];
 
@@ -103,6 +106,8 @@ function HeroMark() {
 }
 
 export default function Hero() {
+  const { ref: spotRef, spot, onMouseMove, onMouseLeave } = useSpotlight();
+  // Keep a separate ref for scroll-down functionality
   const sectionRef = useRef<HTMLElement>(null);
 
   const scrollDown = () => {
@@ -112,7 +117,12 @@ export default function Hero() {
 
   return (
     <section
-      ref={sectionRef}
+      ref={(el) => {
+        (sectionRef as React.MutableRefObject<HTMLElement | null>).current = el;
+        (spotRef as React.MutableRefObject<HTMLElement | null>).current = el;
+      }}
+      onMouseMove={onMouseMove}
+      onMouseLeave={onMouseLeave}
       style={{
         position: "relative",
         minHeight: "100svh",
@@ -124,6 +134,14 @@ export default function Hero() {
         padding: "120px 32px 100px",
       }}
     >
+      {/* ── VIVENTIA background wordmark + spotlight ── */}
+      <SpotlightWordmark
+        spot={spot}
+        verticalAlign="62%"
+        baseOpacity={0.10}
+        spotOpacity={0.24}
+        radius={560}
+      />
       {/* ── Background gradient layers ── */}
       {/* Deep navy base with radial gold glow */}
       <div
@@ -207,21 +225,31 @@ export default function Hero() {
         }}
       />
 
-      {/* ── Main content ── */}
-      <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
+      {/* ── Main content — split layout ── */}
+      <div
+        className="hero-split"
         style={{
           position: "relative",
           zIndex: 2,
-          textAlign: "center",
-          maxWidth: "900px",
           width: "100%",
+          maxWidth: "1240px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          gap: "48px",
+          padding: "0 32px",
         }}
       >
+        {/* Left: text content */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+          className="hero-text-col"
+          style={{ flex: "1 1 0", minWidth: 0 }}
+        >
         {/* Hero V-mark */}
-        <motion.div variants={lineVariant} style={{ display: "flex", justifyContent: "center" }}>
+        <motion.div variants={lineVariant} style={{ display: "flex" }}>
           <HeroMark />
         </motion.div>
 
@@ -316,12 +344,12 @@ export default function Hero() {
           variants={lineVariant}
           style={{
             fontFamily: "var(--font-body)",
-            fontSize: "clamp(16px, 2vw, 19px)",
+            fontSize: "clamp(15px, 1.8vw, 18px)",
             fontWeight: "300",
             color: "rgba(245,240,232,0.5)",
             lineHeight: "1.75",
-            maxWidth: "500px",
-            margin: "32px auto 0",
+            maxWidth: "480px",
+            margin: "32px 0 0",
           }}
         >
           We buy, sell, and manage properties in Dubai for local and
@@ -335,7 +363,6 @@ export default function Hero() {
           style={{
             display: "flex",
             gap: "14px",
-            justifyContent: "center",
             flexWrap: "wrap",
             marginTop: "48px",
           }}
@@ -355,7 +382,19 @@ export default function Hero() {
             Our Services
           </button>
         </motion.div>
-      </motion.div>
+        </motion.div>
+
+        {/* Right: 3-D diamond */}
+        <motion.div
+          className="hero-diamond-col"
+          initial={{ opacity: 0, scale: 0.7, x: 40 }}
+          animate={{ opacity: 1, scale: 1, x: 0 }}
+          transition={{ duration: 1, delay: 0.6, ease: [0.4, 0, 0.2, 1] }}
+          style={{ flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center", position: "relative" }}
+        >
+          <HeroDiamond />
+        </motion.div>
+      </div>
 
       {/* ── Scroll indicator ── */}
       <motion.button
@@ -400,6 +439,22 @@ export default function Hero() {
           <ChevronDown size={18} />
         </div>
       </motion.button>
+
+      <style>{`
+        @media (max-width: 860px) {
+          .hero-split {
+            flex-direction: column !important;
+            align-items: center !important;
+            text-align: center !important;
+            padding: 0 20px !important;
+          }
+          .hero-text-col { align-items: center; }
+          .hero-diamond-col { order: -1; margin-bottom: 24px; }
+        }
+        @media (max-width: 520px) {
+          .hero-diamond-col { transform: scale(0.85); }
+        }
+      `}</style>
     </section>
   );
 }

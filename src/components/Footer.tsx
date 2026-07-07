@@ -1,5 +1,7 @@
 "use client";
 import React, { useState } from "react";
+import { useSpotlight } from "@/lib/useSpotlight";
+import SpotlightWordmark from "@/components/SpotlightWordmark";
 
 /* ─── Icons ──────────────────────────────────────────────── */
 function LinkedinIcon() {
@@ -167,12 +169,29 @@ function NewsletterStrip() {
 
 /* ─── Main Footer ────────────────────────────────────────── */
 export default function Footer() {
+  const { ref: spotRef, spot, onMouseMove, onMouseLeave } = useSpotlight();
+
   return (
-    <footer style={{ background: "#07090F", borderTop: "1px solid rgba(201,168,76,0.14)" }}>
+    <footer
+      ref={spotRef as React.RefObject<HTMLElement>}
+      onMouseMove={onMouseMove}
+      onMouseLeave={onMouseLeave}
+      style={{ background: "#07090F", borderTop: "1px solid rgba(201,168,76,0.14)", position: "relative", overflow: "hidden" }}
+    >
+      {/* VIVENTIA background wordmark + spotlight */}
+      <SpotlightWordmark
+        spot={spot}
+        verticalAlign="58%"
+        baseOpacity={0.07}
+        spotOpacity={0.20}
+        radius={480}
+        scale={1.1}
+      />
+
       <NewsletterStrip />
 
       {/* Main columns */}
-      <div style={{ maxWidth: "1240px", margin: "0 auto", padding: "56px 32px 48px" }}>
+      <div style={{ maxWidth: "1240px", margin: "0 auto", padding: "56px 32px 48px", position: "relative", zIndex: 2 }}>
         <div className="footer-main-grid">
           {/* ── Brand column ── */}
           <div style={{ display: "flex", flexDirection: "column", gap: "0" }}>
@@ -243,7 +262,7 @@ export default function Footer() {
       </div>
 
       {/* ── Bottom bar ── */}
-      <div style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}>
+      <div style={{ borderTop: "1px solid rgba(255,255,255,0.06)", position: "relative", zIndex: 2 }}>
         <div style={{ maxWidth: "1240px", margin: "0 auto", padding: "18px 32px", display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: "12px" }}>
           <div style={{ display: "flex", alignItems: "center", gap: "16px", flexWrap: "wrap" }}>
             <span style={{ fontFamily: "'Raleway', sans-serif", fontSize: "11.5px", color: "rgba(245,240,232,0.25)" }}>
