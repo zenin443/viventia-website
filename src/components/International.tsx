@@ -31,9 +31,22 @@ function SwiftIcon() {
 function StablecoinIcon() {
   return (
     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M12 2L20.5 7V17L12 22L3.5 17V7L12 2Z" />
-      <path d="M12 6v12" />
-      <path d="M9 8.5c0-1.4 1.3-2.5 3-2.5s3 1.1 3 2.5-1.3 2.5-3 2.5-3 1.1-3 2.5S10.7 16 12 16s3-1.1 3-2.5" />
+      {/* Central node */}
+      <circle cx="12" cy="12" r="2.5" />
+      {/* Satellite nodes */}
+      <circle cx="12" cy="4"  r="1.6" />
+      <circle cx="19.5" cy="8"  r="1.6" />
+      <circle cx="19.5" cy="16" r="1.6" />
+      <circle cx="12" cy="20" r="1.6" />
+      <circle cx="4.5"  cy="16" r="1.6" />
+      <circle cx="4.5"  cy="8"  r="1.6" />
+      {/* Connection lines from center to each node */}
+      <line x1="12" y1="9.5"  x2="12"   y2="5.6"  />
+      <line x1="14" y1="10.6" x2="18.1" y2="8.9"  />
+      <line x1="14" y1="13.4" x2="18.1" y2="15.1" />
+      <line x1="12" y1="14.5" x2="12"   y2="18.4" />
+      <line x1="10" y1="13.4" x2="5.9"  y2="15.1" />
+      <line x1="10" y1="10.6" x2="5.9"  y2="8.9"  />
     </svg>
   );
 }
@@ -66,20 +79,20 @@ const SETTLEMENT_OPTIONS = [
 const FLOW_STEPS = [
   {
     number: "01",
-    title: "Tenant Pays Rent",
-    desc: "Your tenant pays in AED, USDT, or USDC — from Dubai or abroad.",
-    detail: "AED · USDT · USDC",
+    title: "You Brief Us",
+    desc: "Buy, sell, list, or manage — share your goal remotely. We assess, advise, and prepare a clear action plan for your Dubai portfolio.",
+    detail: "Buy · Sell · Manage · List",
   },
   {
     number: "02",
-    title: "Viventia Processes",
-    desc: "We collect, verify, convert, and prepare your income for disbursement.",
-    detail: "Collect · Convert · Prepare",
+    title: "We Execute",
+    desc: "Our team handles everything on the ground — due diligence, marketing, tenant placement, negotiations, and DLD transfers.",
+    detail: "End-to-End Execution",
   },
   {
     number: "03",
-    title: "You Receive Abroad",
-    desc: "Funds arrive in your preferred currency at your chosen account or wallet.",
+    title: "You Get Paid",
+    desc: "Proceeds, rental income, or disbursements are settled to your account in your preferred currency — anywhere in the world.",
     detail: "Wire · SWIFT · Stablecoin",
   },
 ];
@@ -113,9 +126,9 @@ export default function International() {
           variants={fadeUp} initial="hidden" whileInView="visible" viewport={viewportOnce}
           style={{ textAlign: "center", marginBottom: "clamp(60px,8vw,90px)" }}
         >
-          <span className="eyebrow">INTERNATIONAL OWNERS</span>
+          <span className="eyebrow">INTERNATIONAL CLIENTS</span>
           <h2 className="section-heading" style={{ whiteSpace: "pre-line" }}>
-            {"Your Dubai income.\nYour account. Anywhere."}
+            {"Buy. Sell. Manage.\nSettled in any currency."}
           </h2>
           <div className="gold-divider" style={{ margin: "20px auto 0" }} />
         </motion.div>
@@ -130,15 +143,15 @@ export default function International() {
           <motion.div variants={slideFromLeft} initial="hidden" whileInView="visible" viewport={viewportOnce}>
 
             <p style={{ fontFamily: "var(--font-body)", fontSize: "15.5px", color: "var(--text-2)", lineHeight: "1.9", marginBottom: "16px" }}>
-              We built Viventia Realty Solutions for the international Dubai property owner.
-              Whether you are based in New York, London, Paris, or Singapore — we collect
-              your rental income and deliver it to you in the currency you use, through the
-              channel you prefer.
+              Viventia Realty Solutions serves international clients across the full property lifecycle.
+              Whether you are buying your first Dubai investment, selling an existing asset,
+              listing your property to the right qualified buyers, or looking for full-service
+              management — we handle it all from wherever you are in the world.
             </p>
             <p style={{ fontFamily: "var(--font-body)", fontSize: "15.5px", color: "var(--text-2)", lineHeight: "1.9", marginBottom: "48px" }}>
-              Every disbursement is processed through regulated banking partners with
-              transparent FX rates and detailed monthly statements for every property
-              in your portfolio.
+              Every transaction — purchase, sale, rental collection, or disbursement — is
+              settled in your preferred currency through the channel you choose. USD wire,
+              SWIFT, or stablecoin. No friction. No compromise.
             </p>
 
             {/* Settlement option cards */}
