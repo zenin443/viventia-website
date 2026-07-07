@@ -39,7 +39,7 @@ const TAB_STEPS: Record<TabKey, { num: string; title: string; desc: string }[]> 
     {
       num: "02",
       title: "Tenant Placement",
-      desc: "We market your property, screen applicants, verify employment and references, and execute RERA-compliant tenancy contracts.",
+      desc: "We market your property, screen applicants, verify employment and references, and execute fully compliant tenancy contracts.",
     },
     {
       num: "03",
@@ -190,68 +190,58 @@ export default function HowItWorks() {
                   background: "var(--bg-card)",
                   border: "1px solid var(--border)",
                   borderRadius: "0",
-                  borderRight:
-                    i < TAB_STEPS[activeTab].length - 1
-                      ? "none"
-                      : "1px solid var(--border)",
+                  borderRight: i < TAB_STEPS[activeTab].length - 1 ? "none" : "1px solid var(--border)",
                   borderLeft: i === 0 ? "1px solid var(--border)" : "none",
+                  overflow: "hidden",
+                  transition: "border-color 0.25s ease",
                 }}
+                onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = "rgba(201,168,76,0.28)"; }}
+                onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = "var(--border)"; }}
               >
-                {/* Vertical gold line along the top */}
-                <div
-                  style={{
-                    position: "absolute",
-                    top: 0,
-                    left: "clamp(20px,2.5vw,32px)",
-                    width: "1px",
-                    height: "100%",
-                    background:
-                      "linear-gradient(180deg, rgba(201,168,76,0.4) 0%, transparent 100%)",
-                    pointerEvents: "none",
-                  }}
-                />
+                {/* Top gold accent line */}
+                <div style={{
+                  position: "absolute", top: 0, left: 0, right: 0, height: "2px",
+                  background: "linear-gradient(90deg, var(--gold) 0%, transparent 80%)",
+                  opacity: 0.55,
+                }} />
 
-                {/* Step number — large outlined */}
+                {/* Step number — ultra-thin Raleway */}
                 <div
+                  aria-hidden="true"
                   style={{
                     fontFamily: "var(--font-heading)",
-                    fontSize: "clamp(48px, 5vw, 72px)",
-                    fontWeight: "900",
-                    WebkitTextStroke: "1px rgba(201,168,76,0.3)",
-                    color: "transparent",
+                    fontSize: "clamp(52px, 5.5vw, 76px)",
+                    fontWeight: "100",
+                    color: "rgba(201,168,76,0.18)",
                     lineHeight: "1",
-                    letterSpacing: "-2px",
+                    letterSpacing: "4px",
                     marginBottom: "20px",
                     userSelect: "none",
                   }}
-                  aria-hidden="true"
                 >
                   {step.num}
                 </div>
 
                 {/* Step title */}
-                <h3
-                  style={{
-                    fontFamily: "var(--font-heading)",
-                    fontSize: "18px",
-                    fontWeight: "700",
-                    color: "var(--text)",
-                    letterSpacing: "0.3px",
-                    marginBottom: "12px",
-                  }}
-                >
+                <h3 style={{
+                  fontFamily: "var(--font-heading)",
+                  fontSize: "15px",
+                  fontWeight: "600",
+                  color: "var(--text)",
+                  letterSpacing: "2px",
+                  textTransform: "uppercase",
+                  marginBottom: "12px",
+                }}>
                   {step.title}
                 </h3>
 
                 {/* Description */}
-                <p
-                  style={{
-                    fontFamily: "var(--font-body)",
-                    fontSize: "13.5px",
-                    color: "var(--text-2)",
-                    lineHeight: "1.75",
-                  }}
-                >
+                <p style={{
+                  fontFamily: "var(--font-body)",
+                  fontSize: "13.5px",
+                  color: "var(--text-2)",
+                  lineHeight: "1.8",
+                }}>
                   {step.desc}
                 </p>
               </div>
