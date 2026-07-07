@@ -1,5 +1,5 @@
 "use client";
-import { useRef } from "react";
+import { useRef, useState, useCallback } from "react";
 import { motion } from "framer-motion";
 import type { Variants } from "framer-motion";
 import { ChevronDown } from "lucide-react";
@@ -27,6 +27,80 @@ const goldLineVariant: Variants = {
     transition: { duration: 0.9, ease: EASE, delay: 0.05 },
   },
 };
+
+/* ─── V-Mark with mouse-follow spotlight ──────────────────── */
+function HeroMark() {
+  const markRef = useRef<HTMLDivElement>(null);
+  const [spot, setSpot] = useState({ x: 50, y: 50, active: false });
+
+  const onMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+    const el = markRef.current;
+    if (!el) return;
+    const { left, top, width, height } = el.getBoundingClientRect();
+    setSpot({ x: ((e.clientX - left) / width) * 100, y: ((e.clientY - top) / height) * 100, active: true });
+  }, []);
+
+  const onLeave = useCallback(() => setSpot(s => ({ ...s, active: false })), []);
+
+  return (
+    <div
+      ref={markRef}
+      onMouseMove={onMove}
+      onMouseLeave={onLeave}
+      style={{ position: "relative", display: "inline-block", cursor: "default", marginBottom: "32px" }}
+    >
+      {/* Outer glow ring */}
+      <motion.div
+        animate={{ opacity: spot.active ? 1 : 0, scale: spot.active ? 1 : 0.9 }}
+        transition={{ duration: 0.3 }}
+        style={{
+          position: "absolute", inset: "-16px", borderRadius: "50%",
+          background: "radial-gradient(ellipse, rgba(201,168,76,0.12) 0%, transparent 70%)",
+          pointerEvents: "none",
+        }}
+      />
+
+      {/* SVG V-mark */}
+      <svg width="96" height="96" viewBox="0 0 96 96" fill="none" style={{ display: "block", filter: spot.active ? "drop-shadow(0 0 24px rgba(201,168,76,0.55))" : "drop-shadow(0 0 8px rgba(201,168,76,0.2))", transition: "filter 0.3s ease" }}>
+        <defs>
+          <linearGradient id="vMarkGrad" x1="0" y1="0" x2="96" y2="96" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stopColor="#e2c570" />
+            <stop offset="40%" stopColor="#C9A84C" />
+            <stop offset="100%" stopColor="#8B6914" />
+          </linearGradient>
+          {/* Mouse-follow spotlight gradient */}
+          <radialGradient id="vMarkSpot" cx={`${spot.x}%`} cy={`${spot.y}%`} r="55%" gradientUnits="objectBoundingBox">
+            <stop offset="0%" stopColor="#fff" stopOpacity={spot.active ? 0.25 : 0} />
+            <stop offset="100%" stopColor="#fff" stopOpacity="0" />
+          </radialGradient>
+          <linearGradient id="vMarkGradHover" x1="0" y1="0" x2="96" y2="96" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stopColor="#f0d880" />
+            <stop offset="50%" stopColor="#e2c570" />
+            <stop offset="100%" stopColor="#C9A84C" />
+          </linearGradient>
+        </defs>
+
+        {/* Background circle */}
+        <circle cx="48" cy="48" r="47" fill="rgba(12,15,24,0.95)" stroke="rgba(201,168,76,0.22)" strokeWidth="1.5" />
+
+        {/* Spotlight overlay on circle */}
+        <circle cx="48" cy="48" r="47" fill="url(#vMarkSpot)" style={{ transition: "all 0.1s" }} />
+
+        {/* V strokes — main */}
+        <path d="M22 26 L48 70 L74 26" stroke={spot.active ? "url(#vMarkGradHover)" : "url(#vMarkGrad)"} strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" fill="none" style={{ transition: "stroke 0.2s" }} />
+        {/* V strokes — inner thin echo */}
+        <path d="M29 26 L48 64 L67 26" stroke="url(#vMarkGrad)" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" fill="none" opacity={spot.active ? 0.5 : 0.2} style={{ transition: "opacity 0.2s" }} />
+
+        {/* Diamond tip at base of V */}
+        <polygon points="48,72 51.5,65 48,58.5 44.5,65" fill={spot.active ? "#e2c570" : "#C9A84C"} style={{ transition: "fill 0.2s" }} />
+
+        {/* Top horizontal bar */}
+        <line x1="14" y1="26" x2="30" y2="26" stroke="url(#vMarkGrad)" strokeWidth="4" strokeLinecap="round" />
+        <line x1="66" y1="26" x2="82" y2="26" stroke="url(#vMarkGrad)" strokeWidth="4" strokeLinecap="round" />
+      </svg>
+    </div>
+  );
+}
 
 export default function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -146,6 +220,11 @@ export default function Hero() {
           width: "100%",
         }}
       >
+        {/* Hero V-mark */}
+        <motion.div variants={lineVariant} style={{ display: "flex", justifyContent: "center" }}>
+          <HeroMark />
+        </motion.div>
+
         {/* Identity badge */}
         <motion.div variants={lineVariant}>
           <span
