@@ -92,11 +92,11 @@ export default function Navbar() {
             <div>
               <div
                 style={{
-                  fontFamily: "var(--font-heading)",
-                  fontSize: "15px",
-                  fontWeight: "700",
+                  fontFamily: "'Copperplate Gothic Light', Copperplate, 'Copperplate Gothic', serif",
+                  fontSize: "16px",
+                  fontWeight: "400",
                   color: "var(--text)",
-                  letterSpacing: "2.5px",
+                  letterSpacing: "4px",
                   lineHeight: "1.1",
                 }}
               >
@@ -105,16 +105,16 @@ export default function Navbar() {
               <div
                 style={{
                   fontFamily: "var(--font-body)",
-                  fontSize: "8.5px",
-                  fontWeight: "500",
-                  color: "rgba(201,168,76,0.7)",
-                  letterSpacing: "2px",
+                  fontSize: "8px",
+                  fontWeight: "700",
+                  color: "rgba(201,168,76,0.72)",
+                  letterSpacing: "3px",
                   textTransform: "uppercase",
                   lineHeight: "1",
-                  marginTop: "2px",
+                  marginTop: "3px",
                 }}
               >
-                REAL ESTATE
+                REALTY SOLUTIONS
               </div>
             </div>
           </a>

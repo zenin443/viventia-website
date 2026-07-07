@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 80" width="320" height="80">
+  <!-- V Monogram Mark -->
+  <!-- Outer V arms -->
+  <line x1="5.6"  y1="4.3" x2="40" y2="63.4" stroke="#C9A84C" stroke-width="3.46" stroke-linecap="round"/>
+  <line x1="74.4" y1="4.3" x2="40" y2="63.4" stroke="#C9A84C" stroke-width="3.46" stroke-linecap="round"/>
+  <!-- Inner V (depth lines) -->
+  <line x1="16.6" y1="4.3" x2="40" y2="54"   stroke="#C9A84C" stroke-width="1.15" stroke-linecap="round" opacity="0.35"/>
+  <line x1="63.4" y1="4.3" x2="40" y2="54"   stroke="#C9A84C" stroke-width="1.15" stroke-linecap="round" opacity="0.35"/>
+  <!-- Architectural top caps -->
+  <line x1="0"    y1="4.3" x2="16.6" y2="4.3" stroke="#C9A84C" stroke-width="2.74" stroke-linecap="round"/>
+  <line x1="63.4" y1="4.3" x2="80"   y2="4.3" stroke="#C9A84C" stroke-width="2.74" stroke-linecap="round"/>
+  <!-- Diamond apex ornament -->
+  <polygon points="40,66.2 44.4,61.8 40,57.4 35.6,61.8" fill="#C9A84C"/>
+
+  <!-- Vertical divider -->
+  <line x1="102" y1="12" x2="102" y2="68" stroke="#C9A84C" stroke-width="0.6" opacity="0.22"/>
+
+  <!-- VIVENTIA wordmark -->
+  <text
+    x="118" y="48"
+    font-family="'Copperplate Gothic Light', Copperplate, 'Copperplate Gothic', serif"
+    font-size="28"
+    font-weight="400"
+    fill="#F5F0E8"
+    letter-spacing="8"
+  >VIVENTIA</text>
+
+  <!-- REALTY SOLUTIONS sub-label -->
+  <text
+    x="120" y="64"
+    font-family="Arial, Helvetica, sans-serif"
+    font-size="8.5"
+    font-weight="700"
+    fill="#C9A84C"
+    letter-spacing="5.5"
+    opacity="0.78"
+  >REALTY SOLUTIONS</text>
+</svg>
