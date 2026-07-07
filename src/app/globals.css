@@ -66,7 +66,7 @@ button { font-family: var(--font-body); cursor: pointer; }
 }
 @keyframes marqueeScroll {
   0%   { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  100% { transform: translateX(-25%); }
 }
 @keyframes goldLine {
   from { width: 0; }
