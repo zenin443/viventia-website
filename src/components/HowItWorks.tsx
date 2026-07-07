@@ -249,6 +249,160 @@ export default function HowItWorks() {
           </motion.div>
         </AnimatePresence>
 
+        {/* Settlement Methods — Buy & Sell tab only */}
+        {activeTab === 0 && (
+          <motion.div
+            key="settlement"
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1], delay: 0.15 }}
+            style={{ marginTop: "clamp(32px,4vw,48px)" }}
+          >
+            {/* Divider + label */}
+            <div style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "16px",
+              marginBottom: "clamp(20px,3vw,28px)",
+            }}>
+              <div style={{ flex: 1, height: "1px", background: "linear-gradient(90deg, transparent, rgba(201,168,76,0.3), transparent)" }} />
+              <span style={{
+                fontFamily: "var(--font-body)",
+                fontSize: "11px",
+                fontWeight: "700",
+                letterSpacing: "3px",
+                color: "var(--gold)",
+                textTransform: "uppercase",
+                whiteSpace: "nowrap",
+              }}>
+                Settlement Options
+              </span>
+              <div style={{ flex: 1, height: "1px", background: "linear-gradient(90deg, transparent, rgba(201,168,76,0.3), transparent)" }} />
+            </div>
+
+            {/* 3 settlement cards */}
+            <div className="settlement-grid">
+              {[
+                {
+                  icon: (
+                    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <rect x="3" y="2" width="18" height="24" rx="2" stroke="#C9A84C" strokeWidth="1.5"/>
+                      <line x1="7" y1="8" x2="17" y2="8" stroke="#C9A84C" strokeWidth="1.3" strokeLinecap="round"/>
+                      <line x1="7" y1="12" x2="17" y2="12" stroke="#C9A84C" strokeWidth="1.3" strokeLinecap="round"/>
+                      <line x1="7" y1="16" x2="13" y2="16" stroke="#C9A84C" strokeWidth="1.3" strokeLinecap="round"/>
+                      <path d="M17 19 L21 23 L25 19" stroke="#C9A84C" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+                      <line x1="21" y1="14" x2="21" y2="23" stroke="#C9A84C" strokeWidth="1.4" strokeLinecap="round"/>
+                    </svg>
+                  ),
+                  title: "Bank Cheque",
+                  sub: "Manager's cheque · PDC · DLD-accepted",
+                  note: "Standard UAE property transaction format — fully compliant with DLD transfer procedures.",
+                },
+                {
+                  icon: (
+                    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="14" cy="14" r="4" stroke="#C9A84C" strokeWidth="1.5"/>
+                      <circle cx="5" cy="7" r="2.2" stroke="#C9A84C" strokeWidth="1.3"/>
+                      <circle cx="23" cy="7" r="2.2" stroke="#C9A84C" strokeWidth="1.3"/>
+                      <circle cx="5" cy="21" r="2.2" stroke="#C9A84C" strokeWidth="1.3"/>
+                      <circle cx="23" cy="21" r="2.2" stroke="#C9A84C" strokeWidth="1.3"/>
+                      <line x1="7" y1="8.5" x2="11" y2="11.5" stroke="#C9A84C" strokeWidth="1.1" strokeLinecap="round" opacity="0.8"/>
+                      <line x1="21" y1="8.5" x2="17" y2="11.5" stroke="#C9A84C" strokeWidth="1.1" strokeLinecap="round" opacity="0.8"/>
+                      <line x1="7" y1="19.5" x2="11" y2="16.5" stroke="#C9A84C" strokeWidth="1.1" strokeLinecap="round" opacity="0.8"/>
+                      <line x1="21" y1="19.5" x2="17" y2="16.5" stroke="#C9A84C" strokeWidth="1.1" strokeLinecap="round" opacity="0.8"/>
+                    </svg>
+                  ),
+                  title: "Crypto Settlement",
+                  sub: "USDT · USDC · On-chain transfer",
+                  note: "Pay or receive in stablecoins. We handle conversion and disbursement at closing.",
+                },
+                {
+                  icon: (
+                    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M15 3 L9 15 L13.5 15 L11 25 L20 12 L15 12 L19 3 Z" stroke="#C9A84C" strokeWidth="1.5" strokeLinejoin="round" strokeLinecap="round" fill="none"/>
+                    </svg>
+                  ),
+                  title: "Instant Wire",
+                  sub: "USD · AED · Same-day settlement",
+                  note: "Funds transferred on DLD registration day — no delays, no holding periods.",
+                },
+              ].map((item, i) => (
+                <div
+                  key={i}
+                  className="settlement-card"
+                  style={{
+                    position: "relative",
+                    padding: "clamp(20px,2.5vw,28px) clamp(18px,2vw,24px)",
+                    background: "var(--bg-card)",
+                    border: "1px solid var(--border)",
+                    overflow: "hidden",
+                    transition: "border-color 0.25s ease",
+                  }}
+                  onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = "rgba(201,168,76,0.35)"; }}
+                  onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = "var(--border)"; }}
+                >
+                  {/* Gold top accent */}
+                  <div style={{
+                    position: "absolute", top: 0, left: 0, right: 0, height: "2px",
+                    background: "linear-gradient(90deg, var(--gold) 0%, transparent 70%)",
+                    opacity: 0.7,
+                  }} />
+
+                  {/* Icon */}
+                  <div style={{
+                    width: "48px",
+                    height: "48px",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    border: "1px solid rgba(201,168,76,0.22)",
+                    marginBottom: "16px",
+                  }}>
+                    {item.icon}
+                  </div>
+
+                  {/* Title */}
+                  <h4 style={{
+                    fontFamily: "var(--font-heading)",
+                    fontSize: "14px",
+                    fontWeight: "600",
+                    color: "var(--text)",
+                    letterSpacing: "1.5px",
+                    textTransform: "uppercase",
+                    marginBottom: "6px",
+                  }}>
+                    {item.title}
+                  </h4>
+
+                  {/* Sub badge */}
+                  <p style={{
+                    fontFamily: "var(--font-body)",
+                    fontSize: "11px",
+                    fontWeight: "700",
+                    color: "var(--gold)",
+                    letterSpacing: "1px",
+                    textTransform: "uppercase",
+                    marginBottom: "10px",
+                    opacity: 0.85,
+                  }}>
+                    {item.sub}
+                  </p>
+
+                  {/* Description */}
+                  <p style={{
+                    fontFamily: "var(--font-body)",
+                    fontSize: "13px",
+                    color: "var(--text-2)",
+                    lineHeight: "1.75",
+                  }}>
+                    {item.note}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        )}
+
         {/* CTA below */}
         <motion.div
           variants={fadeUp}
@@ -286,6 +440,17 @@ export default function HowItWorks() {
         @media (max-width: 600px) {
           .hiw-steps {
             grid-template-columns: 1fr !important;
+          }
+        }
+        .settlement-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 2px;
+        }
+        @media (max-width: 768px) {
+          .settlement-grid {
+            grid-template-columns: 1fr !important;
+            gap: 2px !important;
           }
         }
       `}</style>

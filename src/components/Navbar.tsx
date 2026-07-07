@@ -155,11 +155,25 @@ export default function Navbar() {
             ))}
             <button
               onClick={() => goTo("#contact")}
-              className="btn-gold"
-              style={{ marginLeft: "14px", padding: "10px 26px", fontSize: "12px" }}
+              style={{
+                marginLeft: "8px", padding: "10px 20px", fontSize: "12px",
+                background: "none", border: "1px solid rgba(201,168,76,0.35)",
+                borderRadius: "7px", cursor: "pointer", fontFamily: "var(--font-body)",
+                fontWeight: 700, color: "rgba(201,168,76,0.8)", letterSpacing: "1.5px",
+                textTransform: "uppercase", transition: "all 0.2s",
+              }}
+              onMouseEnter={e => { e.currentTarget.style.borderColor = "rgba(201,168,76,0.7)"; e.currentTarget.style.color = "#C9A84C"; }}
+              onMouseLeave={e => { e.currentTarget.style.borderColor = "rgba(201,168,76,0.35)"; e.currentTarget.style.color = "rgba(201,168,76,0.8)"; }}
             >
-              List Your Property
+              Contact
             </button>
+            <a
+              href="/onboarding"
+              className="btn-gold"
+              style={{ marginLeft: "8px", padding: "10px 22px", fontSize: "12px", textDecoration: "none", display: "inline-block" }}
+            >
+              Start Onboarding
+            </a>
           </div>
 
           {/* ── Mobile Hamburger ── */}
@@ -259,15 +273,21 @@ export default function Navbar() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 12 }}
               transition={{ delay: NAV_LINKS.length * 0.07 + 0.1 }}
-              style={{ marginTop: "24px" }}
+              style={{ marginTop: "24px", display: "flex", flexDirection: "column", gap: "12px", width: "100%", alignItems: "center" }}
             >
               <button
                 onClick={() => goTo("#contact")}
-                className="btn-gold"
-                style={{ padding: "14px 48px", fontSize: "14px", width: "100%" }}
+                style={{ padding: "13px 48px", fontSize: "13px", width: "240px", background: "none", border: "1px solid rgba(201,168,76,0.35)", borderRadius: "8px", cursor: "pointer", fontFamily: "var(--font-body)", fontWeight: 700, color: "rgba(201,168,76,0.8)", letterSpacing: "1.5px", textTransform: "uppercase" }}
               >
-                List Your Property
+                Contact
               </button>
+              <a
+                href="/onboarding"
+                className="btn-gold"
+                style={{ padding: "13px 48px", fontSize: "13px", width: "240px", textDecoration: "none", display: "block", textAlign: "center" }}
+              >
+                Start Onboarding
+              </a>
             </motion.div>
           </motion.div>
         )}

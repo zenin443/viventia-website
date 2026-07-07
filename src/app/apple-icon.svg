@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180" width="180" height="180">
+  <!-- Background  Apple requires full square, no transparency -->
+  <rect width="180" height="180" rx="0" fill="#07090F"/>
+
+  <!-- V monogram mark  centered with generous padding for Apple -->
+  <!-- Left outer arm -->
+  <line x1="34" y1="34" x2="90" y2="134" stroke="#C9A84C" stroke-width="9.5" stroke-linecap="round"/>
+  <!-- Right outer arm -->
+  <line x1="146" y1="34" x2="90" y2="134" stroke="#C9A84C" stroke-width="9.5" stroke-linecap="round"/>
+  <!-- Left inner depth line -->
+  <line x1="55" y1="34" x2="90" y2="118" stroke="#C9A84C" stroke-width="3.2" stroke-linecap="round" opacity="0.38"/>
+  <!-- Right inner depth line -->
+  <line x1="125" y1="34" x2="90" y2="118" stroke="#C9A84C" stroke-width="3.2" stroke-linecap="round" opacity="0.38"/>
+  <!-- Left architectural top cap -->
+  <line x1="22" y1="34" x2="55" y2="34" stroke="#C9A84C" stroke-width="7.5" stroke-linecap="round"/>
+  <!-- Right architectural top cap -->
+  <line x1="125" y1="34" x2="158" y2="34" stroke="#C9A84C" stroke-width="7.5" stroke-linecap="round"/>
+  <!-- Diamond apex ornament -->
+  <polygon points="90,141 98,133 90,125 82,133" fill="#C9A84C"/>
+</svg>
