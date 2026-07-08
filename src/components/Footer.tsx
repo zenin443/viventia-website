@@ -1,6 +1,5 @@
 "use client";
 import React, { useState } from "react";
-import { useSpotlight } from "@/lib/useSpotlight";
 import SpotlightWordmark from "@/components/SpotlightWordmark";
 
 /* ─── Icons ──────────────────────────────────────────────── */
@@ -169,21 +168,13 @@ function NewsletterStrip() {
 
 /* ─── Main Footer ────────────────────────────────────────── */
 export default function Footer() {
-  const { ref: spotRef, spot, onMouseMove, onMouseLeave } = useSpotlight();
-
   return (
-    <footer
-      ref={spotRef as React.RefObject<HTMLElement>}
-      onMouseMove={onMouseMove}
-      onMouseLeave={onMouseLeave}
-      style={{ background: "#07090F", borderTop: "1px solid rgba(201,168,76,0.14)", position: "relative", overflow: "hidden" }}
-    >
-      {/* VIVENTIA background wordmark + spotlight */}
+    <footer style={{ background: "#07090F", borderTop: "1px solid rgba(201,168,76,0.14)", position: "relative", overflow: "hidden" }}>
+      {/* VIVENTIA background wordmark + cursor spotlight (text-only glow) */}
       <SpotlightWordmark
-        spot={spot}
         verticalAlign="58%"
-        baseOpacity={0.07}
-        radius={480}
+        restOpacity={0.05}
+        radius={350}
         scale={1.1}
       />
 

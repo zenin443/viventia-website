@@ -1,86 +1,112 @@
 "use client";
-import { SpotlightState } from "@/lib/useSpotlight";
+import { useRef, useEffect } from "react";
 
 interface SpotlightWordmarkProps {
-  spot: SpotlightState;
   verticalAlign?: string;
-  /** opacity of wordmark at rest — white/grey */
-  baseOpacity?: number;
+  /** opacity of text at rest (grey ghost) */
+  restOpacity?: number;
   /** spotlight radius in px */
   radius?: number;
   scale?: number;
 }
 
+/**
+ * VIVENTIA background wordmark with Resend-style cursor spotlight.
+ *
+ * Only the text pixels light up — the background stays completely dark.
+ * Technique: background-clip:text + radial-gradient positioned at cursor.
+ * Zero React state → direct DOM style.setProperty → no re-renders, buttery smooth.
+ */
 export default function SpotlightWordmark({
-  spot,
   verticalAlign = "50%",
-  baseOpacity = 0.06,
-  radius = 520,
+  restOpacity = 0.07,
+  radius = 380,
   scale = 1,
 }: SpotlightWordmarkProps) {
+  const wrapRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const wrap = wrapRef.current;
+    if (!wrap) return;
+
+    // Walk up to find the nearest section or footer
+    const section = wrap.closest("section, footer") as HTMLElement | null;
+    if (!section) return;
+
+    const onMove = (e: MouseEvent) => {
+      const { left, top, width, height } = wrap.getBoundingClientRect();
+      const x = ((e.clientX - left) / width) * 100;
+      const y = ((e.clientY - top) / height) * 100;
+      // Direct DOM — zero React overhead
+      wrap.style.setProperty("--mx", `${x}%`);
+      wrap.style.setProperty("--my", `${y}%`);
+      wrap.style.setProperty("--active", "1");
+    };
+
+    const onLeave = () => {
+      wrap.style.setProperty("--active", "0");
+      // Push spotlight off-screen so text returns to rest colour
+      wrap.style.setProperty("--mx", "150%");
+      wrap.style.setProperty("--my", "50%");
+    };
+
+    section.addEventListener("mousemove", onMove);
+    section.addEventListener("mouseleave", onLeave);
+    return () => {
+      section.removeEventListener("mousemove", onMove);
+      section.removeEventListener("mouseleave", onLeave);
+    };
+  }, []);
+
   return (
-    <>
-      {/* ── Layer 1: VIVENTIA wordmark — white/grey, barely visible at rest ── */}
+    <div
+      ref={wrapRef}
+      aria-hidden="true"
+      // Default: spotlight pushed off-screen right (150%), text shows at restOpacity
+      style={{
+        ["--mx" as string]: "150%",
+        ["--my" as string]: "50%",
+        ["--active" as string]: "0",
+        position: "absolute",
+        left: "50%",
+        top: verticalAlign,
+        transform: "translate(-50%, -50%)",
+        width: "100%",
+        pointerEvents: "none",
+        zIndex: 0,
+        userSelect: "none",
+        overflow: "hidden",
+      }}
+    >
       <div
-        aria-hidden="true"
         style={{
-          position: "absolute",
-          left: "50%",
-          top: verticalAlign,
-          transform: "translate(-50%, -50%)",
-          width: "100%",
-          pointerEvents: "none",
-          zIndex: 0,
-          userSelect: "none",
-          overflow: "hidden",
+          fontFamily: "'Raleway', sans-serif",
+          fontWeight: 900,
+          fontSize: `clamp(80px, ${14 * scale}vw, ${260 * scale}px)`,
+          lineHeight: 1,
+          letterSpacing: `${0.18 * scale}em`,
+          textAlign: "center",
+          whiteSpace: "nowrap",
+          textTransform: "uppercase",
+          WebkitFontSmoothing: "antialiased",
+
+          // ── The magic: gradient clipped to text shape only ──
+          // When --mx is 150% (off screen), text edge colour = restOpacity white
+          // When cursor is over text, that spot brightens to 0.75 white
+          background: `radial-gradient(
+            ${radius}px circle at var(--mx) var(--my),
+            rgba(255, 255, 255, 0.72) 0%,
+            rgba(255, 255, 255, ${restOpacity * 1.4}) 50%,
+            rgba(255, 255, 255, ${restOpacity}) 100%
+          )`,
+          WebkitBackgroundClip: "text",
+          backgroundClip: "text",
+          WebkitTextFillColor: "transparent",
+          color: "transparent",
         }}
       >
-        <div
-          style={{
-            fontFamily: "'Raleway', sans-serif",
-            fontWeight: 900,
-            fontSize: `clamp(80px, ${14 * scale}vw, ${260 * scale}px)`,
-            lineHeight: 1,
-            letterSpacing: `${0.18 * scale}em`,
-            color: `rgba(255, 255, 255, ${baseOpacity})`,
-            textAlign: "center",
-            whiteSpace: "nowrap",
-            textTransform: "uppercase",
-            WebkitFontSmoothing: "antialiased",
-          }}
-        >
-          VIVENTIA
-        </div>
+        VIVENTIA
       </div>
-
-      {/* ── Layer 2: spotlight — white, only visible when mouse is in section ── */}
-      {/* opacity: 0→1 toggle is far smoother than gradient→transparent */}
-      <div
-        aria-hidden="true"
-        style={{
-          position: "absolute",
-          inset: 0,
-          pointerEvents: "none",
-          zIndex: 1,
-          background: `radial-gradient(${radius}px circle at ${spot.x}% ${spot.y}%, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.03) 45%, transparent 70%)`,
-          opacity: spot.active ? 1 : 0,
-          transition: spot.active ? "opacity 0.1s linear" : "opacity 0.7s ease",
-        }}
-      />
-
-      {/* ── Layer 3: tight bright core — crisp white at cursor centre ── */}
-      <div
-        aria-hidden="true"
-        style={{
-          position: "absolute",
-          inset: 0,
-          pointerEvents: "none",
-          zIndex: 1,
-          background: `radial-gradient(160px circle at ${spot.x}% ${spot.y}%, rgba(255,255,255,0.07) 0%, transparent 65%)`,
-          opacity: spot.active ? 1 : 0,
-          transition: spot.active ? "opacity 0.1s linear" : "opacity 0.7s ease",
-        }}
-      />
-    </>
+    </div>
   );
 }

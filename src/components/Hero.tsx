@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import type { Variants } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { viewportOnce } from "@/lib/animations";
-import { useSpotlight } from "@/lib/useSpotlight";
 import SpotlightWordmark from "@/components/SpotlightWordmark";
 import HeroDiamond from "@/components/HeroDiamond";
 
@@ -106,8 +105,6 @@ function HeroMark() {
 }
 
 export default function Hero() {
-  const { ref: spotRef, spot, onMouseMove, onMouseLeave } = useSpotlight();
-  // Keep a separate ref for scroll-down functionality
   const sectionRef = useRef<HTMLElement>(null);
 
   const scrollDown = () => {
@@ -117,12 +114,7 @@ export default function Hero() {
 
   return (
     <section
-      ref={(el) => {
-        (sectionRef as React.MutableRefObject<HTMLElement | null>).current = el;
-        (spotRef as React.MutableRefObject<HTMLElement | null>).current = el;
-      }}
-      onMouseMove={onMouseMove}
-      onMouseLeave={onMouseLeave}
+      ref={sectionRef}
       style={{
         position: "relative",
         minHeight: "100svh",
@@ -136,11 +128,9 @@ export default function Hero() {
     >
       {/* ── VIVENTIA background wordmark + spotlight ── */}
       <SpotlightWordmark
-        spot={spot}
         verticalAlign="62%"
-        baseOpacity={0.10}
-
-        radius={560}
+        restOpacity={0.06}
+        radius={420}
       />
       {/* ── Background gradient layers ── */}
       {/* Deep navy base with radial gold glow */}
