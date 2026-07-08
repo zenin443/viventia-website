@@ -108,9 +108,9 @@ function FooterLink({ href, label }: { href: string; label: string }) {
     <a href={href} onClick={handleClick}
       target={isExternal ? "_blank" : undefined}
       rel={isExternal ? "noopener noreferrer" : undefined}
-      style={{ fontFamily: "'Raleway', sans-serif", fontSize: "13px", color: "rgba(245,240,232,0.42)", textDecoration: "none", display: "block", padding: "4px 0", lineHeight: 1.5, transition: "color 0.18s" }}
-      onMouseEnter={e => (e.currentTarget.style.color = "rgba(245,240,232,0.9)")}
-      onMouseLeave={e => (e.currentTarget.style.color = "rgba(245,240,232,0.42)")}
+      style={{ fontFamily: "'Raleway', sans-serif", fontSize: "13px", color: "rgba(245,240,232,0.65)", textDecoration: "none", display: "block", padding: "4px 0", lineHeight: 1.5, transition: "color 0.18s" }}
+      onMouseEnter={e => (e.currentTarget.style.color = "#F5F0E8")}
+      onMouseLeave={e => (e.currentTarget.style.color = "rgba(245,240,232,0.65)")}
     >
       {label}
     </a>
@@ -183,7 +183,6 @@ export default function Footer() {
         spot={spot}
         verticalAlign="58%"
         baseOpacity={0.07}
-        spotOpacity={0.20}
         radius={480}
         scale={1.1}
       />
@@ -209,26 +208,26 @@ export default function Footer() {
               </div>
             </a>
 
-            <p style={{ fontFamily: "'Raleway', sans-serif", fontSize: "13px", color: "rgba(245,240,232,0.38)", lineHeight: 1.85, maxWidth: "240px", marginBottom: "24px" }}>
+            <p style={{ fontFamily: "'Raleway', sans-serif", fontSize: "13px", color: "rgba(245,240,232,0.58)", lineHeight: 1.85, maxWidth: "240px", marginBottom: "24px" }}>
               Premium Dubai real estate consultancy for local and international clients. Buy, sell, manage.
             </p>
 
             {/* Contact micro-details */}
             <div style={{ display: "flex", flexDirection: "column", gap: "8px", marginBottom: "24px" }}>
               <a href="mailto:info@viventiarealtysolutions.com"
-                style={{ fontFamily: "'Raleway', sans-serif", fontSize: "12px", color: "rgba(245,240,232,0.38)", textDecoration: "none", transition: "color 0.18s", display: "flex", alignItems: "center", gap: "7px" }}
+                style={{ fontFamily: "'Raleway', sans-serif", fontSize: "12px", color: "rgba(245,240,232,0.60)", textDecoration: "none", transition: "color 0.18s", display: "flex", alignItems: "center", gap: "7px" }}
                 onMouseEnter={e => (e.currentTarget.style.color = "#C9A84C")}
-                onMouseLeave={e => (e.currentTarget.style.color = "rgba(245,240,232,0.38)")}
+                onMouseLeave={e => (e.currentTarget.style.color = "rgba(245,240,232,0.60)")}
               >
                 <span style={{ width: "4px", height: "4px", borderRadius: "50%", background: "rgba(201,168,76,0.5)", flexShrink: 0 }} />
                 info@viventiarealtysolutions.com
               </a>
-              <span style={{ fontFamily: "'Raleway', sans-serif", fontSize: "12px", color: "rgba(245,240,232,0.28)", display: "flex", alignItems: "center", gap: "7px" }}>
-                <span style={{ width: "4px", height: "4px", borderRadius: "50%", background: "rgba(245,240,232,0.15)", flexShrink: 0 }} />
+              <span style={{ fontFamily: "'Raleway', sans-serif", fontSize: "12px", color: "rgba(245,240,232,0.50)", display: "flex", alignItems: "center", gap: "7px" }}>
+                <span style={{ width: "4px", height: "4px", borderRadius: "50%", background: "rgba(245,240,232,0.30)", flexShrink: 0 }} />
                 Dubai, UAE · GMT+4
               </span>
-              <span style={{ fontFamily: "'Raleway', sans-serif", fontSize: "12px", color: "rgba(245,240,232,0.28)", display: "flex", alignItems: "center", gap: "7px" }}>
-                <span style={{ width: "4px", height: "4px", borderRadius: "50%", background: "rgba(245,240,232,0.15)", flexShrink: 0 }} />
+              <span style={{ fontFamily: "'Raleway', sans-serif", fontSize: "12px", color: "rgba(245,240,232,0.50)", display: "flex", alignItems: "center", gap: "7px" }}>
+                <span style={{ width: "4px", height: "4px", borderRadius: "50%", background: "rgba(245,240,232,0.30)", flexShrink: 0 }} />
                 Available 7 days · 9am – 9pm
               </span>
             </div>
@@ -250,7 +249,7 @@ export default function Footer() {
           {/* ── Nav columns ── */}
           {COLS.map(col => (
             <div key={col.heading}>
-              <h4 style={{ fontFamily: "'Raleway', sans-serif", fontSize: "10px", fontWeight: 700, color: "rgba(245,240,232,0.5)", letterSpacing: "2.5px", textTransform: "uppercase", marginBottom: "18px" }}>
+              <h4 style={{ fontFamily: "'Raleway', sans-serif", fontSize: "10px", fontWeight: 700, color: "rgba(245,240,232,0.75)", letterSpacing: "2.5px", textTransform: "uppercase", marginBottom: "18px" }}>
                 {col.heading}
               </h4>
               <div style={{ display: "flex", flexDirection: "column" }}>
@@ -265,18 +264,18 @@ export default function Footer() {
       <div style={{ borderTop: "1px solid rgba(255,255,255,0.06)", position: "relative", zIndex: 2 }}>
         <div style={{ maxWidth: "1240px", margin: "0 auto", padding: "18px 32px", display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: "12px" }}>
           <div style={{ display: "flex", alignItems: "center", gap: "16px", flexWrap: "wrap" }}>
-            <span style={{ fontFamily: "'Raleway', sans-serif", fontSize: "11.5px", color: "rgba(245,240,232,0.25)" }}>
+            <span style={{ fontFamily: "'Raleway', sans-serif", fontSize: "11.5px", color: "rgba(245,240,232,0.50)" }}>
               © {new Date().getFullYear()} Viventia Realty Solutions. All rights reserved.
             </span>
             <span style={{ color: "rgba(255,255,255,0.1)", fontSize: "11px" }}>·</span>
-            <a href="/privacy" style={{ fontFamily: "'Raleway', sans-serif", fontSize: "11.5px", color: "rgba(245,240,232,0.25)", textDecoration: "none", transition: "color 0.18s" }}
-              onMouseEnter={e => (e.currentTarget.style.color = "rgba(245,240,232,0.65)")}
-              onMouseLeave={e => (e.currentTarget.style.color = "rgba(245,240,232,0.25)")}
+            <a href="/privacy" style={{ fontFamily: "'Raleway', sans-serif", fontSize: "11.5px", color: "rgba(245,240,232,0.50)", textDecoration: "none", transition: "color 0.18s" }}
+              onMouseEnter={e => (e.currentTarget.style.color = "#F5F0E8")}
+              onMouseLeave={e => (e.currentTarget.style.color = "rgba(245,240,232,0.50)")}
             >Privacy</a>
-            <span style={{ color: "rgba(255,255,255,0.1)", fontSize: "11px" }}>·</span>
-            <a href="/terms" style={{ fontFamily: "'Raleway', sans-serif", fontSize: "11.5px", color: "rgba(245,240,232,0.25)", textDecoration: "none", transition: "color 0.18s" }}
-              onMouseEnter={e => (e.currentTarget.style.color = "rgba(245,240,232,0.65)")}
-              onMouseLeave={e => (e.currentTarget.style.color = "rgba(245,240,232,0.25)")}
+            <span style={{ color: "rgba(255,255,255,0.2)", fontSize: "11px" }}>·</span>
+            <a href="/terms" style={{ fontFamily: "'Raleway', sans-serif", fontSize: "11.5px", color: "rgba(245,240,232,0.50)", textDecoration: "none", transition: "color 0.18s" }}
+              onMouseEnter={e => (e.currentTarget.style.color = "#F5F0E8")}
+              onMouseLeave={e => (e.currentTarget.style.color = "rgba(245,240,232,0.50)")}
             >Terms</a>
           </div>
 

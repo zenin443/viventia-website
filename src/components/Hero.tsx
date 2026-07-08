@@ -139,7 +139,7 @@ export default function Hero() {
         spot={spot}
         verticalAlign="62%"
         baseOpacity={0.10}
-        spotOpacity={0.24}
+
         radius={560}
       />
       {/* ── Background gradient layers ── */}
