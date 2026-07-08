@@ -129,7 +129,7 @@ export default function Hero() {
       {/* ── VIVENTIA background wordmark + spotlight ── */}
       <SpotlightWordmark
         verticalAlign="62%"
-        restOpacity={0.06}
+        restOpacity={0.03}
         radius={420}
       />
       {/* ── Background gradient layers ── */}

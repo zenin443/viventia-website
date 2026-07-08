@@ -95,8 +95,8 @@ export default function SpotlightWordmark({
           // When cursor is over text, that spot brightens to 0.75 white
           background: `radial-gradient(
             ${radius}px circle at var(--mx) var(--my),
-            rgba(255, 255, 255, 0.72) 0%,
-            rgba(255, 255, 255, ${restOpacity * 1.4}) 50%,
+            rgba(255, 255, 255, 0.68) 0%,
+            rgba(255, 255, 255, ${restOpacity}) 55%,
             rgba(255, 255, 255, ${restOpacity}) 100%
           )`,
           WebkitBackgroundClip: "text",

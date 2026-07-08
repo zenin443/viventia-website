@@ -173,7 +173,7 @@ export default function Footer() {
       {/* VIVENTIA background wordmark + cursor spotlight (text-only glow) */}
       <SpotlightWordmark
         verticalAlign="58%"
-        restOpacity={0.05}
+        restOpacity={0.03}
         radius={350}
         scale={1.1}
       />
