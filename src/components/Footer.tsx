@@ -90,7 +90,7 @@ const SOCIALS = [
   { Icon: LinkedinIcon, href: "https://linkedin.com", label: "LinkedIn" },
   { Icon: InstagramIcon, href: "https://instagram.com", label: "Instagram" },
   { Icon: XIcon, href: "https://x.com", label: "X (Twitter)" },
-  { Icon: WhatsAppIcon, href: "https://wa.me/971000000000", label: "WhatsApp" },
+  { Icon: WhatsAppIcon, href: "https://wa.me/971541921968", label: "WhatsApp" },
 ];
 
 /* ─── FooterLink ─────────────────────────────────────────── */
@@ -272,7 +272,7 @@ export default function Footer() {
 
           {/* Status pill — Resend-inspired */}
           <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-            <a href="https://wa.me/971000000000" target="_blank" rel="noopener noreferrer"
+            <a href="https://wa.me/971541921968" target="_blank" rel="noopener noreferrer"
               style={{ fontFamily: "'Raleway', sans-serif", fontSize: "11px", color: "rgba(245,240,232,0.3)", textDecoration: "none", transition: "color 0.18s", letterSpacing: "0.5px" }}
               onMouseEnter={e => (e.currentTarget.style.color = "#C9A84C")}
               onMouseLeave={e => (e.currentTarget.style.color = "rgba(245,240,232,0.3)")}

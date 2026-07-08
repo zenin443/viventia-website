@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, MapPin, Shield, Clock, MessageCircle, CheckCircle } from "lucide-react";
+import { Mail, MapPin, Clock, MessageCircle, CheckCircle } from "lucide-react";
 import { fadeUp, slideFromLeft, slideFromRight, viewportOnce } from "@/lib/animations";
 
 const INFO_ROWS = [
@@ -18,10 +18,10 @@ const INFO_ROWS = [
     href: null,
   },
   {
-    icon: Shield,
-    label: "License",
-    value: "RERA Licensed Broker · DLD Registered",
-    href: null,
+    icon: MessageCircle,
+    label: "WhatsApp",
+    value: "+971 54 192 1968",
+    href: "https://wa.me/971541921968",
   },
   {
     icon: Clock,
@@ -234,7 +234,7 @@ export default function Contact() {
 
             {/* WhatsApp CTA */}
             <a
-              href="https://wa.me/971XXXXXXXXX"
+              href="https://wa.me/971541921968"
               target="_blank"
               rel="noopener noreferrer"
               className="btn-gold"
