@@ -5,7 +5,7 @@ import type { Variants } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { viewportOnce } from "@/lib/animations";
 import SpotlightWordmark from "@/components/SpotlightWordmark";
-import HeroMapArt from "@/components/HeroMapArt";
+import HeroGlobe from "@/components/HeroGlobe";
 
 const EASE: [number, number, number, number] = [0.4, 0, 0.2, 1];
 
@@ -374,9 +374,9 @@ export default function Hero() {
         </motion.div>
         </motion.div>
 
-        {/* Right: UAE map art */}
+        {/* Right: plexus globe + skyline */}
         <div className="hero-diamond-col" style={{ flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center" }}>
-          <HeroMapArt />
+          <HeroGlobe />
         </div>
       </div>
 
