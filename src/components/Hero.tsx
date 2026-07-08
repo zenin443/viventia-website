@@ -5,7 +5,7 @@ import type { Variants } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { viewportOnce } from "@/lib/animations";
 import SpotlightWordmark from "@/components/SpotlightWordmark";
-import HeroDiamond from "@/components/HeroDiamond";
+import HeroMapArt from "@/components/HeroMapArt";
 
 const EASE: [number, number, number, number] = [0.4, 0, 0.2, 1];
 
@@ -374,16 +374,10 @@ export default function Hero() {
         </motion.div>
         </motion.div>
 
-        {/* Right: 3-D diamond */}
-        <motion.div
-          className="hero-diamond-col"
-          initial={{ opacity: 0, scale: 0.7, x: 40 }}
-          animate={{ opacity: 1, scale: 1, x: 0 }}
-          transition={{ duration: 1, delay: 0.6, ease: [0.4, 0, 0.2, 1] }}
-          style={{ flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center", position: "relative" }}
-        >
-          <HeroDiamond />
-        </motion.div>
+        {/* Right: UAE map art */}
+        <div className="hero-diamond-col" style={{ flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center" }}>
+          <HeroMapArt />
+        </div>
       </div>
 
       {/* ── Scroll indicator ── */}
