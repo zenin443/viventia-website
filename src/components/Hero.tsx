@@ -133,18 +133,17 @@ export default function Hero() {
         radius={420}
       />
       {/* ── Background gradient layers ── */}
-      {/* Deep navy base with radial gold glow */}
+      {/* Pure black base */}
       <div
         aria-hidden="true"
         style={{
           position: "absolute",
           inset: 0,
-          background:
-            "radial-gradient(ellipse 80% 60% at 50% 30%, rgba(28,35,65,0.9) 0%, rgba(7,9,15,1) 70%)",
+          background: "#000000",
           zIndex: 0,
         }}
       />
-      {/* Simulated skyline silhouette in the lower third */}
+      {/* Bottom fade to black */}
       <div
         aria-hidden="true"
         style={{
@@ -153,8 +152,7 @@ export default function Hero() {
           left: 0,
           right: 0,
           height: "45%",
-          background:
-            "linear-gradient(0deg, rgba(7,9,15,1) 0%, rgba(7,9,15,0) 100%)",
+          background: "linear-gradient(0deg, #000000 0%, transparent 100%)",
           zIndex: 1,
         }}
       />
