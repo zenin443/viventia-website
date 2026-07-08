@@ -13,15 +13,15 @@ import {
 import { fadeUp, slideFromLeft, slideFromRight, stagger, viewportOnce } from "@/lib/animations";
 
 const PROPERTY_TYPES = [
-  { icon: Home, label: "Residential", desc: "Apartments, villas, and townhouses across Dubai's most sought-after communities." },
-  { icon: Building2, label: "Commercial", desc: "Office spaces, retail units, and warehouses for businesses in Dubai." },
-  { icon: Layers, label: "Off-Plan", desc: "Pre-launch and off-plan inventory from Dubai's leading developers." },
+  { icon: Home, label: "Residential", desc: "Apartments, villas, and townhouses across the UAE's most sought-after communities." },
+  { icon: Building2, label: "Commercial", desc: "Office spaces, retail units, and warehouses for businesses across the UAE." },
+  { icon: Layers, label: "Off-Plan", desc: "Pre-launch and off-plan inventory from the UAE's leading developers." },
   { icon: TrendingUp, label: "Investment", desc: "Investment-grade sourcing for funds, family offices, and HNW individuals." },
 ];
 
 const MGMT_SERVICES = [
   { icon: Key, label: "Long-Term Rentals", desc: "Tenant sourcing, lease execution, rent collection, and renewals." },
-  { icon: Star, label: "Short-Term & Holiday", desc: "DTCM-licensed holiday home management on Airbnb and Booking.com." },
+  { icon: Star, label: "Short-Term & Holiday", desc: "Licensed holiday home management on Airbnb, Booking.com and other platforms." },
   { icon: CreditCard, label: "Rent Collection", desc: "AED, USD, or digital assets — disbursed to your bank monthly." },
   { icon: Wrench, label: "Maintenance", desc: "Preventive and reactive maintenance, utilities, and inspections." },
 ];
@@ -378,7 +378,7 @@ export default function Services() {
                   margin: "0 0 18px",
                 }}
               >
-                Your Dubai income.{" "}
+                Your UAE income.{" "}
                 <br />
                 Your bank account.{" "}
                 <br />
@@ -393,7 +393,7 @@ export default function Services() {
                   maxWidth: "420px",
                 }}
               >
-                We manage Dubai properties for US, EU, and UK-based owners and
+                We manage UAE properties for US, EU, and UK-based owners and
                 disburse rental income in their currency, to their bank — via
                 wire, SWIFT, or stablecoin.
               </p>

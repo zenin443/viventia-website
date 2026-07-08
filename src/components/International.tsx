@@ -80,7 +80,7 @@ const FLOW_STEPS = [
   {
     number: "01",
     title: "You Brief Us",
-    desc: "Buy, sell, list, or manage — share your goal remotely. We assess, advise, and prepare a clear action plan for your Dubai portfolio.",
+    desc: "Buy, sell, list, or manage — share your goal remotely. We assess, advise, and prepare a clear action plan tailored to your portfolio.",
     detail: "Buy · Sell · Manage · List",
   },
   {
@@ -113,8 +113,8 @@ export default function International() {
         style={{
           position: "absolute", top: "50%", left: "50%",
           transform: "translate(-50%,-50%)",
-          width: "900px", height: "700px",
-          background: "radial-gradient(ellipse, rgba(201,168,76,0.04) 0%, transparent 65%)",
+          width: "600px", height: "400px",
+          background: "radial-gradient(ellipse, rgba(201,168,76,0.02) 0%, transparent 65%)",
           pointerEvents: "none", zIndex: 0,
         }}
       />
@@ -144,7 +144,7 @@ export default function International() {
 
             <p style={{ fontFamily: "var(--font-body)", fontSize: "15.5px", color: "var(--text-2)", lineHeight: "1.9", marginBottom: "16px" }}>
               Viventia Realty Solutions serves international clients across the full property lifecycle.
-              Whether you are buying your first Dubai investment, selling an existing asset,
+              Whether you are buying your first UAE investment, selling an existing asset,
               listing your property to the right qualified buyers, or looking for full-service
               management — we handle it all from wherever you are in the world.
             </p>

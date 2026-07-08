@@ -46,7 +46,7 @@ const STEPS = [
 ];
 
 const SERVICES = [
-  { id: "buy", label: "Buy Property", desc: "Acquire residential or commercial assets in Dubai" },
+  { id: "buy", label: "Buy Property", desc: "Acquire residential or commercial assets across the UAE" },
   { id: "sell", label: "Sell Property", desc: "List and sell your UAE property to qualified buyers" },
   { id: "manage", label: "Property Management", desc: "Full-service management — tenants, maintenance, rent" },
   { id: "list", label: "List for Rent", desc: "Market your property and place the right tenants" },

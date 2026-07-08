@@ -80,7 +80,7 @@ export default function SpotlightWordmark({
     >
       <div
         style={{
-          fontFamily: "'Raleway', sans-serif",
+          fontFamily: "var(--font-body)",
           fontWeight: 900,
           fontSize: `clamp(80px, ${14 * scale}vw, ${260 * scale}px)`,
           lineHeight: 1,

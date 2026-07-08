@@ -68,10 +68,36 @@ export default function Contact() {
   const [form, setForm] = useState({
     name: "",
     email: "",
+    phone: "",
     service: "",
     message: "",
   });
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setSubmitting(true);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          phone: form.phone,
+          service: form.service,
+          message: form.message,
+        }),
+      });
+      if (!res.ok) throw new Error("Failed");
+      setSubmitted(true);
+    } catch {
+      alert("Something went wrong. Please try WhatsApp or email us directly.");
+    } finally {
+      setSubmitting(false);
+    }
+  };
 
   const onFocus = (
     e: React.FocusEvent<
@@ -316,7 +342,7 @@ export default function Contact() {
                 <button
                   onClick={() => {
                     setSubmitted(false);
-                    setForm({ name: "", email: "", service: "", message: "" });
+                    setForm({ name: "", email: "", phone: "", service: "", message: "" });
                   }}
                   className="btn-ghost"
                   style={{ cursor: "pointer", fontSize: "12px" }}
@@ -327,10 +353,7 @@ export default function Contact() {
             ) : (
               /* Form */
               <form
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  setSubmitted(true);
-                }}
+                onSubmit={handleSubmit}
                 style={{
                   padding: "40px",
                   background: "rgba(255,255,255,0.02)",
@@ -386,6 +409,25 @@ export default function Contact() {
                       onBlur={onBlur}
                     />
                   </div>
+                </div>
+
+                {/* Phone */}
+                <div>
+                  <label style={LABEL_STYLE} htmlFor="contact-phone">
+                    Phone
+                  </label>
+                  <input
+                    id="contact-phone"
+                    type="tel"
+                    placeholder="+971 XX XXX XXXX"
+                    value={form.phone}
+                    onChange={(e) =>
+                      setForm({ ...form, phone: e.target.value })
+                    }
+                    style={INPUT_STYLE}
+                    onFocus={onFocus}
+                    onBlur={onBlur}
+                  />
                 </div>
 
                 {/* Service dropdown */}
@@ -446,15 +488,17 @@ export default function Contact() {
                 <button
                   type="submit"
                   className="btn-gold"
+                  disabled={submitting}
                   style={{
                     width: "100%",
                     justifyContent: "center",
                     padding: "15px",
                     fontSize: "13px",
-                    cursor: "pointer",
+                    cursor: submitting ? "not-allowed" : "pointer",
+                    opacity: submitting ? 0.7 : 1,
                   }}
                 >
-                  Send Message
+                  {submitting ? "SENDING..." : "Send Message"}
                 </button>
 
                 <p

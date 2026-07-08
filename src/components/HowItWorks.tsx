@@ -12,7 +12,7 @@ const TAB_STEPS: Record<TabKey, { num: string; title: string; desc: string }[]> 
     {
       num: "01",
       title: "Search & Shortlist",
-      desc: "We assess your requirements, budget, and preferred areas, then shortlist the best matching properties across all Dubai neighborhoods and developer projects.",
+      desc: "We assess your requirements, budget, and preferred areas, then shortlist the best matching properties across all UAE markets and developer projects.",
     },
     {
       num: "02",
@@ -34,7 +34,7 @@ const TAB_STEPS: Record<TabKey, { num: string; title: string; desc: string }[]> 
     {
       num: "01",
       title: "Sign Agreement",
-      desc: "We agree on a management scope, fee structure, and timeline. One simple agreement covers your entire Dubai portfolio.",
+      desc: "We agree on a management scope, fee structure, and timeline. One simple agreement covers your entire property portfolio.",
     },
     {
       num: "02",
@@ -61,7 +61,7 @@ const TAB_STEPS: Record<TabKey, { num: string; title: string; desc: string }[]> 
     {
       num: "02",
       title: "Property Setup",
-      desc: "We inspect, photograph, list, and prepare your property for tenancy. All licences, DEWA, and maintenance are coordinated by our team.",
+      desc: "We inspect, photograph, list, and prepare your property for tenancy. All licences, utilities, and maintenance are coordinated by our team.",
     },
     {
       num: "03",

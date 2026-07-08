@@ -14,6 +14,8 @@ const AREAS = [
   { name: "Creek Harbour",   desc: "Waterfront destination with strong capital appreciation outlook",    tag: "Emerging" },
   { name: "JBR",             desc: "Beachfront apartments and one of Dubai's top leisure strips",        tag: "Beachfront" },
   { name: "MBR City",        desc: "Mohammed Bin Rashid City — master-planned, future-focused",         tag: "Future Growth" },
+  { name: "Yas Island",      desc: "Abu Dhabi's premier leisure destination with world-class amenities, theme parks, and waterfront living.", tag: "Leisure & Residential" },
+  { name: "Al Reem Island",  desc: "Fast-growing urban hub in Abu Dhabi with modern towers, retail, and strong rental demand from professionals.", tag: "Urban Living" },
 ];
 
 export default function Areas() {
@@ -22,7 +24,7 @@ export default function Areas() {
       id="areas"
       style={{
         padding: "clamp(80px,10vw,140px) 0",
-        background: "rgba(255,255,255,0.015)",
+        background: "rgba(255,255,255,0.018)",
         borderTop: "1px solid var(--border)",
         borderBottom: "1px solid var(--border)",
         overflow: "hidden",
@@ -37,7 +39,7 @@ export default function Areas() {
         style={{ textAlign: "center", marginBottom: "clamp(48px,6vw,72px)", padding: "0 32px" }}
       >
         <span className="eyebrow">WHERE WE OPERATE</span>
-        <h2 className="section-heading">Dubai Areas</h2>
+        <h2 className="section-heading">Key UAE Markets</h2>
         <div className="gold-divider" style={{ margin: "20px auto 0" }} />
       </motion.div>
 

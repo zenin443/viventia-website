@@ -45,7 +45,7 @@ export default function Marquee() {
         borderTop: "1px solid rgba(201,168,76,0.15)",
         borderBottom: "1px solid rgba(201,168,76,0.15)",
         padding: "14px 0",
-        background: "rgba(7,9,15,0.6)",
+        background: "rgba(0,0,0,0.55)",
       }}
     >
       {/* Left fade */}

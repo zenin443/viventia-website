@@ -13,7 +13,7 @@ interface Stat {
 
 const STATS: Stat[] = [
   { value: 100, suffix: "+", display: "100+", label: "Properties Managed", sublabel: "Residential & short-term portfolios" },
-  { value: 12, suffix: "", display: "12", label: "Dubai Areas", sublabel: "Active market coverage" },
+  { value: 20, suffix: "+", display: "20+", label: "UAE Markets", sublabel: "Active market coverage" },
   { value: 3, suffix: "", display: "3", label: "Continents Served", sublabel: "US · Europe · Middle East" },
 ];
 
@@ -99,7 +99,7 @@ export default function Stats() {
     <section
       style={{
         padding: "clamp(60px,8vw,100px) 32px",
-        background: "rgba(255,255,255,0.02)",
+        background: "rgba(255,255,255,0.018)",
         borderTop: "1px solid var(--border)",
         borderBottom: "1px solid var(--border)",
       }}

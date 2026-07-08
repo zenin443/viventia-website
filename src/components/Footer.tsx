@@ -69,7 +69,7 @@ const COLS = [
   {
     heading: "Company",
     links: [
-      { label: "About Us", href: "#" },
+      { label: "About Us", href: "/about" },
       { label: "How It Works", href: "#how-it-works" },
       { label: "Contact", href: "#contact" },
       { label: "Client Onboarding", href: "/onboarding" },
@@ -87,9 +87,6 @@ const COLS = [
 ];
 
 const SOCIALS = [
-  { Icon: LinkedinIcon, href: "https://linkedin.com", label: "LinkedIn" },
-  { Icon: InstagramIcon, href: "https://instagram.com", label: "Instagram" },
-  { Icon: XIcon, href: "https://x.com", label: "X (Twitter)" },
   { Icon: WhatsAppIcon, href: "https://wa.me/971541921968", label: "WhatsApp" },
 ];
 
@@ -107,7 +104,7 @@ function FooterLink({ href, label }: { href: string; label: string }) {
     <a href={href} onClick={handleClick}
       target={isExternal ? "_blank" : undefined}
       rel={isExternal ? "noopener noreferrer" : undefined}
-      style={{ fontFamily: "'Raleway', sans-serif", fontSize: "13px", color: "rgba(245,240,232,0.65)", textDecoration: "none", display: "block", padding: "4px 0", lineHeight: 1.5, transition: "color 0.18s" }}
+      style={{ fontFamily: "var(--font-body)", fontSize: "13px", color: "rgba(245,240,232,0.65)", textDecoration: "none", display: "block", padding: "4px 0", lineHeight: 1.5, transition: "color 0.18s" }}
       onMouseEnter={e => (e.currentTarget.style.color = "#F5F0E8")}
       onMouseLeave={e => (e.currentTarget.style.color = "rgba(245,240,232,0.65)")}
     >
@@ -130,30 +127,30 @@ function NewsletterStrip() {
     <div style={{ borderBottom: "1px solid rgba(255,255,255,0.06)", padding: "40px 0 44px" }}>
       <div style={{ maxWidth: "1240px", margin: "0 auto", padding: "0 32px", display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: "28px" }}>
         <div>
-          <div style={{ fontFamily: "'Raleway', sans-serif", fontSize: "10px", fontWeight: 700, color: "#C9A84C", letterSpacing: "3px", textTransform: "uppercase", marginBottom: "8px" }}>
+          <div style={{ fontFamily: "var(--font-body)", fontSize: "10px", fontWeight: 700, color: "#C9A84C", letterSpacing: "3px", textTransform: "uppercase", marginBottom: "8px" }}>
             UAE MARKET UPDATES
           </div>
-          <h3 style={{ fontFamily: "'Raleway', sans-serif", fontWeight: 300, fontSize: "22px", color: "#F5F0E8", letterSpacing: "2px", margin: 0 }}>
+          <h3 style={{ fontFamily: "var(--font-heading)", fontWeight: 300, fontSize: "22px", color: "#F5F0E8", letterSpacing: "2px", margin: 0 }}>
             Stay ahead of the market.
           </h3>
-          <p style={{ fontFamily: "'Raleway', sans-serif", fontSize: "13px", color: "rgba(245,240,232,0.4)", marginTop: "6px" }}>
+          <p style={{ fontFamily: "var(--font-body)", fontSize: "13px", color: "rgba(245,240,232,0.4)", marginTop: "6px" }}>
             Quarterly insights on UAE property trends, rates, and investment opportunities.
           </p>
         </div>
         {sent ? (
           <div style={{ display: "flex", alignItems: "center", gap: "10px", padding: "14px 22px", background: "rgba(201,168,76,0.08)", border: "1px solid rgba(201,168,76,0.25)", borderRadius: "10px" }}>
             <div style={{ width: "8px", height: "8px", borderRadius: "50%", background: "#C9A84C" }} />
-            <span style={{ fontFamily: "'Raleway', sans-serif", fontSize: "13px", color: "#C9A84C", fontWeight: 600, letterSpacing: "1px" }}>You&apos;re on the list.</span>
+            <span style={{ fontFamily: "var(--font-body)", fontSize: "13px", color: "#C9A84C", fontWeight: 600, letterSpacing: "1px" }}>You&apos;re on the list.</span>
           </div>
         ) : (
           <form onSubmit={handleSubmit} style={{ display: "flex", gap: "0", background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: "10px", overflow: "hidden", minWidth: "340px" }}>
             <input
               type="email" value={email} onChange={e => setEmail(e.target.value)}
               placeholder="your@email.com" required
-              style={{ flex: 1, background: "none", border: "none", padding: "13px 18px", fontFamily: "'Raleway', sans-serif", fontSize: "13px", color: "#F5F0E8", outline: "none" }}
+              style={{ flex: 1, background: "none", border: "none", padding: "13px 18px", fontFamily: "var(--font-body)", fontSize: "13px", color: "#F5F0E8", outline: "none" }}
             />
             <button type="submit"
-              style={{ background: "#C9A84C", border: "none", padding: "13px 20px", cursor: "pointer", color: "#07090F", display: "flex", alignItems: "center", gap: "6px", fontFamily: "'Raleway', sans-serif", fontSize: "12px", fontWeight: 800, letterSpacing: "1px", textTransform: "uppercase", transition: "background 0.2s", flexShrink: 0 }}
+              style={{ background: "#C9A84C", border: "none", padding: "13px 20px", cursor: "pointer", color: "#07090F", display: "flex", alignItems: "center", gap: "6px", fontFamily: "var(--font-body)", fontSize: "12px", fontWeight: 800, letterSpacing: "1px", textTransform: "uppercase", transition: "background 0.2s", flexShrink: 0 }}
               onMouseEnter={e => (e.currentTarget.style.background = "#e2c570")}
               onMouseLeave={e => (e.currentTarget.style.background = "#C9A84C")}
             >
@@ -169,7 +166,7 @@ function NewsletterStrip() {
 /* ─── Main Footer ────────────────────────────────────────── */
 export default function Footer() {
   return (
-    <footer style={{ background: "#07090F", borderTop: "1px solid rgba(201,168,76,0.14)", position: "relative", overflow: "hidden" }}>
+    <footer style={{ background: "#000000", borderTop: "1px solid rgba(201,168,76,0.14)", position: "relative", overflow: "hidden" }}>
       {/* VIVENTIA background wordmark + cursor spotlight (text-only glow) */}
       <SpotlightWordmark
         verticalAlign="58%"
@@ -187,37 +184,36 @@ export default function Footer() {
           <div style={{ display: "flex", flexDirection: "column", gap: "0" }}>
             <a href="#" onClick={e => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }}
               style={{ display: "inline-flex", alignItems: "center", gap: "12px", textDecoration: "none", marginBottom: "20px" }}>
-              <svg width="34" height="34" viewBox="0 0 38 38" fill="none">
-                <rect width="38" height="38" rx="9" fill="#0d1117" />
-                <rect width="38" height="38" rx="9" stroke="rgba(201,168,76,0.28)" strokeWidth="1" />
-                <path d="M10 13 L19 27 L28 13" stroke="url(#ftrChev)" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-                <defs><linearGradient id="ftrChev" x1="10" y1="13" x2="28" y2="27" gradientUnits="userSpaceOnUse"><stop stopColor="#c9a84c" /><stop offset="1" stopColor="#e2c570" /></linearGradient></defs>
+              <svg width="34" height="34" viewBox="0 0 4096 4096" fill="none" aria-hidden="true">
+                <g fill="#D8B56A" fillRule="evenodd">
+                  <path d="M 2954.0 1377.0 L 2467.0 1726.0 L 2095.0 3040.0 L 2139.0 3239.0 Z M 1140.0 1374.0 L 1958.0 3239.0 L 2002.0 3047.0 L 1630.0 1726.0 Z M 900.0 856.0 L 1096.0 1285.0 L 1763.0 1767.0 L 2018.0 2796.0 L 2080.0 2789.0 L 2328.0 1770.0 L 2998.0 1285.0 L 3194.0 868.0 L 2288.0 1435.0 L 2044.0 2749.0 L 1806.0 1438.0 Z" />
+                </g>
               </svg>
               <div>
                 <div style={{ fontFamily: "'Copperplate Gothic Light', Copperplate, serif", fontSize: "14px", color: "#F5F0E8", letterSpacing: "3.5px", lineHeight: 1.1 }}>VIVENTIA</div>
-                <div style={{ fontFamily: "'Raleway', sans-serif", fontSize: "7.5px", fontWeight: 700, color: "rgba(201,168,76,0.65)", letterSpacing: "2.5px", textTransform: "uppercase", marginTop: "3px" }}>REALTY SOLUTIONS</div>
+                <div style={{ fontFamily: "var(--font-body)", fontSize: "7.5px", fontWeight: 700, color: "rgba(201,168,76,0.65)", letterSpacing: "2.5px", textTransform: "uppercase", marginTop: "3px" }}>REALTY SOLUTIONS</div>
               </div>
             </a>
 
-            <p style={{ fontFamily: "'Raleway', sans-serif", fontSize: "13px", color: "rgba(245,240,232,0.58)", lineHeight: 1.85, maxWidth: "240px", marginBottom: "24px" }}>
-              Premium Dubai real estate consultancy for local and international clients. Buy, sell, manage.
+            <p style={{ fontFamily: "var(--font-body)", fontSize: "13px", color: "rgba(245,240,232,0.58)", lineHeight: 1.85, maxWidth: "240px", marginBottom: "24px" }}>
+              Premium UAE real estate consultancy for local and international clients. Buy, sell, manage.
             </p>
 
             {/* Contact micro-details */}
             <div style={{ display: "flex", flexDirection: "column", gap: "8px", marginBottom: "24px" }}>
               <a href="mailto:info@viventiarealtysolutions.com"
-                style={{ fontFamily: "'Raleway', sans-serif", fontSize: "12px", color: "rgba(245,240,232,0.60)", textDecoration: "none", transition: "color 0.18s", display: "flex", alignItems: "center", gap: "7px" }}
+                style={{ fontFamily: "var(--font-body)", fontSize: "12px", color: "rgba(245,240,232,0.60)", textDecoration: "none", transition: "color 0.18s", display: "flex", alignItems: "center", gap: "7px" }}
                 onMouseEnter={e => (e.currentTarget.style.color = "#C9A84C")}
                 onMouseLeave={e => (e.currentTarget.style.color = "rgba(245,240,232,0.60)")}
               >
                 <span style={{ width: "4px", height: "4px", borderRadius: "50%", background: "rgba(201,168,76,0.5)", flexShrink: 0 }} />
                 info@viventiarealtysolutions.com
               </a>
-              <span style={{ fontFamily: "'Raleway', sans-serif", fontSize: "12px", color: "rgba(245,240,232,0.50)", display: "flex", alignItems: "center", gap: "7px" }}>
+              <span style={{ fontFamily: "var(--font-body)", fontSize: "12px", color: "rgba(245,240,232,0.50)", display: "flex", alignItems: "center", gap: "7px" }}>
                 <span style={{ width: "4px", height: "4px", borderRadius: "50%", background: "rgba(245,240,232,0.30)", flexShrink: 0 }} />
                 Dubai, UAE · GMT+4
               </span>
-              <span style={{ fontFamily: "'Raleway', sans-serif", fontSize: "12px", color: "rgba(245,240,232,0.50)", display: "flex", alignItems: "center", gap: "7px" }}>
+              <span style={{ fontFamily: "var(--font-body)", fontSize: "12px", color: "rgba(245,240,232,0.50)", display: "flex", alignItems: "center", gap: "7px" }}>
                 <span style={{ width: "4px", height: "4px", borderRadius: "50%", background: "rgba(245,240,232,0.30)", flexShrink: 0 }} />
                 Available 7 days · 9am – 9pm
               </span>
@@ -240,7 +236,7 @@ export default function Footer() {
           {/* ── Nav columns ── */}
           {COLS.map(col => (
             <div key={col.heading}>
-              <h4 style={{ fontFamily: "'Raleway', sans-serif", fontSize: "10px", fontWeight: 700, color: "rgba(245,240,232,0.75)", letterSpacing: "2.5px", textTransform: "uppercase", marginBottom: "18px" }}>
+              <h4 style={{ fontFamily: "var(--font-body)", fontSize: "10px", fontWeight: 700, color: "rgba(245,240,232,0.75)", letterSpacing: "2.5px", textTransform: "uppercase", marginBottom: "18px" }}>
                 {col.heading}
               </h4>
               <div style={{ display: "flex", flexDirection: "column" }}>
@@ -255,16 +251,16 @@ export default function Footer() {
       <div style={{ borderTop: "1px solid rgba(255,255,255,0.06)", position: "relative", zIndex: 2 }}>
         <div style={{ maxWidth: "1240px", margin: "0 auto", padding: "18px 32px", display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: "12px" }}>
           <div style={{ display: "flex", alignItems: "center", gap: "16px", flexWrap: "wrap" }}>
-            <span style={{ fontFamily: "'Raleway', sans-serif", fontSize: "11.5px", color: "rgba(245,240,232,0.50)" }}>
+            <span style={{ fontFamily: "var(--font-body)", fontSize: "11.5px", color: "rgba(245,240,232,0.50)" }}>
               © {new Date().getFullYear()} Viventia Realty Solutions. All rights reserved.
             </span>
             <span style={{ color: "rgba(255,255,255,0.1)", fontSize: "11px" }}>·</span>
-            <a href="/privacy" style={{ fontFamily: "'Raleway', sans-serif", fontSize: "11.5px", color: "rgba(245,240,232,0.50)", textDecoration: "none", transition: "color 0.18s" }}
+            <a href="/privacy" style={{ fontFamily: "var(--font-body)", fontSize: "11.5px", color: "rgba(245,240,232,0.50)", textDecoration: "none", transition: "color 0.18s" }}
               onMouseEnter={e => (e.currentTarget.style.color = "#F5F0E8")}
               onMouseLeave={e => (e.currentTarget.style.color = "rgba(245,240,232,0.50)")}
             >Privacy</a>
             <span style={{ color: "rgba(255,255,255,0.2)", fontSize: "11px" }}>·</span>
-            <a href="/terms" style={{ fontFamily: "'Raleway', sans-serif", fontSize: "11.5px", color: "rgba(245,240,232,0.50)", textDecoration: "none", transition: "color 0.18s" }}
+            <a href="/terms" style={{ fontFamily: "var(--font-body)", fontSize: "11.5px", color: "rgba(245,240,232,0.50)", textDecoration: "none", transition: "color 0.18s" }}
               onMouseEnter={e => (e.currentTarget.style.color = "#F5F0E8")}
               onMouseLeave={e => (e.currentTarget.style.color = "rgba(245,240,232,0.50)")}
             >Terms</a>
@@ -273,7 +269,7 @@ export default function Footer() {
           {/* Status pill — Resend-inspired */}
           <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
             <a href="https://wa.me/971541921968" target="_blank" rel="noopener noreferrer"
-              style={{ fontFamily: "'Raleway', sans-serif", fontSize: "11px", color: "rgba(245,240,232,0.3)", textDecoration: "none", transition: "color 0.18s", letterSpacing: "0.5px" }}
+              style={{ fontFamily: "var(--font-body)", fontSize: "11px", color: "rgba(245,240,232,0.3)", textDecoration: "none", transition: "color 0.18s", letterSpacing: "0.5px" }}
               onMouseEnter={e => (e.currentTarget.style.color = "#C9A84C")}
               onMouseLeave={e => (e.currentTarget.style.color = "rgba(245,240,232,0.3)")}
             >
@@ -282,7 +278,7 @@ export default function Footer() {
             <span style={{ color: "rgba(255,255,255,0.1)", fontSize: "11px" }}>·</span>
             <div style={{ display: "flex", alignItems: "center", gap: "6px", padding: "4px 10px", background: "rgba(34,197,94,0.08)", border: "1px solid rgba(34,197,94,0.2)", borderRadius: "100px" }}>
               <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#22c55e", boxShadow: "0 0 6px rgba(34,197,94,0.5)", flexShrink: 0 }} />
-              <span style={{ fontFamily: "'Raleway', sans-serif", fontSize: "10px", fontWeight: 700, color: "rgba(34,197,94,0.8)", letterSpacing: "1.5px", textTransform: "uppercase" }}>
+              <span style={{ fontFamily: "var(--font-body)", fontSize: "10px", fontWeight: 700, color: "rgba(34,197,94,0.8)", letterSpacing: "1.5px", textTransform: "uppercase" }}>
                 Accepting Clients
               </span>
             </div>

@@ -6,23 +6,30 @@ const TESTIMONIALS = [
   {
     quote:
       "Viventia Realty Solutions handled everything — finding tenants, collecting rent, and wiring the money to my Chase account every month. I haven't had to worry about my Dubai apartment in two years.",
-    author: "James Mitchell",
+    author: "J.M. — New York, USA",
     title: "Property Investor",
     country: "🇺🇸 New York",
   },
   {
     quote:
       "We purchased our first Dubai property through Viventia and the entire process was seamless. Their knowledge of the off-plan market saved us significant money.",
-    author: "Sophie & Marc Delacroix",
+    author: "S. & M. — Paris, France",
     title: "First-Time Buyers",
     country: "🇫🇷 Paris",
   },
   {
     quote:
       "As a landlord based in London, I needed someone I could trust completely. Viventia sends my rental income to my UK account every month — no fuss, no delays.",
-    author: "Emma Thornton",
+    author: "E.T. — London, UK",
     title: "Landlord",
     country: "🇬🇧 London",
+  },
+  {
+    quote:
+      "Viventia handled the entire transaction remotely. From shortlisting in Abu Dhabi to completing the transfer paperwork — zero friction. The stablecoin disbursement option was a game changer for us.",
+    author: "K.A. — Riyadh, Saudi Arabia",
+    title: "Investment Buyer",
+    country: "🇸🇦 Riyadh",
   },
 ];
 
@@ -135,8 +142,23 @@ export default function Testimonials() {
                     color: "var(--text)",
                     letterSpacing: "0.5px",
                     marginBottom: "4px",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "6px",
                   }}
                 >
+                  <span
+                    aria-hidden="true"
+                    style={{
+                      width: "6px",
+                      height: "6px",
+                      borderRadius: "50%",
+                      background: "var(--gold)",
+                      boxShadow: "0 0 6px rgba(201,168,76,0.5)",
+                      flexShrink: 0,
+                      display: "inline-block",
+                    }}
+                  />
                   {testimonial.author}
                 </div>
                 <div

@@ -4,10 +4,12 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
 const NAV_LINKS = [
-  { label: "Buy & Sell", href: "#services" },
-  { label: "Management", href: "#services" },
-  { label: "International", href: "#international" },
-  { label: "Contact", href: "#contact" },
+  { label: "Buy & Sell",            href: "#services" },
+  { label: "Property Management",   href: "#services" },
+  { label: "International Owners",  href: "#international" },
+  { label: "Settlements",           href: "#international" },
+  { label: "UAE Areas",             href: "#areas" },
+  { label: "Insights",              href: "#blog" },
 ];
 
 export default function Navbar() {
@@ -46,7 +48,7 @@ export default function Navbar() {
           right: 0,
           zIndex: 100,
           transition: "background 0.35s ease, backdrop-filter 0.35s ease, border-color 0.35s ease",
-          background: scrolled ? "rgba(7,9,15,0.94)" : "transparent",
+          background: scrolled ? "rgba(0,0,0,0.95)" : "transparent",
           backdropFilter: scrolled ? "blur(24px)" : "none",
           WebkitBackdropFilter: scrolled ? "blur(24px)" : "none",
           borderBottom: scrolled
@@ -71,23 +73,10 @@ export default function Navbar() {
             onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }}
             style={{ display: "flex", alignItems: "center", gap: "12px", textDecoration: "none", cursor: "pointer" }}
           >
-            <svg width="38" height="38" viewBox="0 0 38 38" fill="none" aria-hidden="true">
-              <rect width="38" height="38" rx="9" fill="#0d1117" />
-              <rect width="38" height="38" rx="9" stroke="rgba(201,168,76,0.28)" strokeWidth="1" />
-              <path
-                d="M10 13 L19 27 L28 13"
-                stroke="url(#chevGrad)"
-                strokeWidth="2.8"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                fill="none"
-              />
-              <defs>
-                <linearGradient id="chevGrad" x1="10" y1="13" x2="28" y2="27" gradientUnits="userSpaceOnUse">
-                  <stop stopColor="#c9a84c" />
-                  <stop offset="1" stopColor="#e2c570" />
-                </linearGradient>
-              </defs>
+            <svg width="36" height="36" viewBox="0 0 4096 4096" fill="none" aria-hidden="true">
+              <g fill="#D8B56A" fillRule="evenodd">
+                <path d="M 2954.0 1377.0 L 2467.0 1726.0 L 2095.0 3040.0 L 2139.0 3239.0 Z M 1140.0 1374.0 L 1958.0 3239.0 L 2002.0 3047.0 L 1630.0 1726.0 Z M 900.0 856.0 L 1096.0 1285.0 L 1763.0 1767.0 L 2018.0 2796.0 L 2080.0 2789.0 L 2328.0 1770.0 L 2998.0 1285.0 L 3194.0 868.0 L 2288.0 1435.0 L 2044.0 2749.0 L 1806.0 1438.0 Z" />
+              </g>
             </svg>
             <div>
               <div
@@ -155,25 +144,19 @@ export default function Navbar() {
             ))}
             <button
               onClick={() => goTo("#contact")}
+              data-cta="book-private-consultation"
               style={{
-                marginLeft: "8px", padding: "10px 20px", fontSize: "12px",
-                background: "none", border: "1px solid rgba(201,168,76,0.35)",
-                borderRadius: "7px", cursor: "pointer", fontFamily: "var(--font-body)",
-                fontWeight: 700, color: "rgba(201,168,76,0.8)", letterSpacing: "1.5px",
-                textTransform: "uppercase", transition: "all 0.2s",
+                marginLeft: "8px", padding: "10px 22px", fontSize: "11px",
+                background: "linear-gradient(135deg,#c9a84c,#9a6f1a)",
+                border: "none", borderRadius: "7px", cursor: "pointer",
+                fontFamily: "var(--font-heading)", fontWeight: 700,
+                color: "#fff", letterSpacing: "0.5px", transition: "opacity 0.2s",
               }}
-              onMouseEnter={e => { e.currentTarget.style.borderColor = "rgba(201,168,76,0.7)"; e.currentTarget.style.color = "#C9A84C"; }}
-              onMouseLeave={e => { e.currentTarget.style.borderColor = "rgba(201,168,76,0.35)"; e.currentTarget.style.color = "rgba(201,168,76,0.8)"; }}
+              onMouseEnter={e => { e.currentTarget.style.opacity = "0.85"; }}
+              onMouseLeave={e => { e.currentTarget.style.opacity = "1"; }}
             >
-              Contact
+              Book Private Consultation
             </button>
-            <a
-              href="/onboarding"
-              className="btn-gold"
-              style={{ marginLeft: "8px", padding: "10px 22px", fontSize: "12px", textDecoration: "none", display: "inline-block" }}
-            >
-              Start Onboarding
-            </a>
           </div>
 
           {/* ── Mobile Hamburger ── */}
@@ -211,7 +194,7 @@ export default function Navbar() {
               position: "fixed",
               inset: 0,
               zIndex: 99,
-              background: "rgba(7,9,15,0.98)",
+              background: "rgba(0,0,0,0.95)",
               backdropFilter: "blur(28px)",
               WebkitBackdropFilter: "blur(28px)",
               display: "flex",
@@ -277,17 +260,18 @@ export default function Navbar() {
             >
               <button
                 onClick={() => goTo("#contact")}
-                style={{ padding: "13px 48px", fontSize: "13px", width: "240px", background: "none", border: "1px solid rgba(201,168,76,0.35)", borderRadius: "8px", cursor: "pointer", fontFamily: "var(--font-body)", fontWeight: 700, color: "rgba(201,168,76,0.8)", letterSpacing: "1.5px", textTransform: "uppercase" }}
+                data-cta="book-private-consultation"
+                style={{ padding: "13px 48px", fontSize: "13px", width: "280px", background: "linear-gradient(135deg,#c9a84c,#9a6f1a)", border: "none", borderRadius: "8px", cursor: "pointer", fontFamily: "var(--font-heading)", fontWeight: 700, color: "#fff", letterSpacing: "0.5px" }}
               >
-                Contact
+                Book Private Consultation
               </button>
-              <a
-                href="/onboarding"
-                className="btn-gold"
-                style={{ padding: "13px 48px", fontSize: "13px", width: "240px", textDecoration: "none", display: "block", textAlign: "center" }}
+              <button
+                onClick={() => { window.open("https://wa.me/971541921968", "_blank"); setOpen(false); }}
+                data-cta="whatsapp"
+                style={{ padding: "13px 48px", fontSize: "13px", width: "280px", background: "none", border: "1px solid rgba(201,168,76,0.35)", borderRadius: "8px", cursor: "pointer", fontFamily: "var(--font-body)", fontWeight: 600, color: "rgba(201,168,76,0.8)", letterSpacing: "0.5px" }}
               >
-                Start Onboarding
-              </a>
+                WhatsApp Us
+              </button>
             </motion.div>
           </motion.div>
         )}
