@@ -131,13 +131,13 @@ function NewsletterStrip() {
       <div style={{ maxWidth: "1240px", margin: "0 auto", padding: "0 32px", display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: "28px" }}>
         <div>
           <div style={{ fontFamily: "'Raleway', sans-serif", fontSize: "10px", fontWeight: 700, color: "#C9A84C", letterSpacing: "3px", textTransform: "uppercase", marginBottom: "8px" }}>
-            DUBAI MARKET UPDATES
+            UAE MARKET UPDATES
           </div>
           <h3 style={{ fontFamily: "'Raleway', sans-serif", fontWeight: 300, fontSize: "22px", color: "#F5F0E8", letterSpacing: "2px", margin: 0 }}>
             Stay ahead of the market.
           </h3>
           <p style={{ fontFamily: "'Raleway', sans-serif", fontSize: "13px", color: "rgba(245,240,232,0.4)", marginTop: "6px" }}>
-            Quarterly insights on Dubai property trends, rates, and investment opportunities.
+            Quarterly insights on UAE property trends, rates, and investment opportunities.
           </p>
         </div>
         {sent ? (

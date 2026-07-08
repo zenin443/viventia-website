@@ -271,7 +271,7 @@ export default function Hero() {
                 flexShrink: 0,
               }}
             />
-            Dubai Real Estate Consultancy
+            UAE Real Estate Consultancy
           </span>
         </motion.div>
 
@@ -288,7 +288,7 @@ export default function Hero() {
               marginBottom: "0",
             }}
           >
-            DUBAI{" "}
+            UAE{" "}
             <span className="gold-text">PROPERTY</span>
           </h1>
         </motion.div>
@@ -306,8 +306,8 @@ export default function Hero() {
               marginBottom: "0",
             }}
           >
-            MANAGED{" "}
-            <span className="gold-text">GLOBALLY</span>
+            GET IT{" "}
+            <span className="gold-text">SETTLED</span>
           </h1>
         </motion.div>
 
@@ -340,9 +340,9 @@ export default function Hero() {
             margin: "32px 0 0",
           }}
         >
-          We buy, sell, and manage properties in Dubai for local and
+          We buy, sell, and manage properties across the UAE for local and
           international clients — from listing to lease to cross-border
-          disbursement.
+          settlement in any currency.
         </motion.p>
 
         {/* CTA row */}

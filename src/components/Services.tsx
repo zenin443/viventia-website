@@ -115,7 +115,7 @@ export default function Services() {
                   margin: "0 0 18px",
                 }}
               >
-                Buy and sell Dubai property
+                Buy and sell UAE property
               </h3>
               <p
                 style={{
@@ -340,7 +340,7 @@ export default function Services() {
                 }}
               >
                 From tenant placement to monthly disbursement, we manage your
-                Dubai property as if it were our own. You own it. We run it —
+                UAE property as if it were our own. You own it. We run it —
                 with complete transparency and zero guesswork.
               </p>
             </div>

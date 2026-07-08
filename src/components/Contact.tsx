@@ -140,7 +140,7 @@ export default function Contact() {
               }}
             >
               Whether you are looking to buy, sell, or hand over management of
-              your Dubai property — our team is ready to help. Reach out and we
+              your UAE property — our team is ready to help. Reach out and we
               will respond within one business day.
             </p>
 
