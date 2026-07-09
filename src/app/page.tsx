@@ -8,7 +8,6 @@ import International from "@/components/International";
 import HowItWorks from "@/components/HowItWorks";
 import Areas from "@/components/Areas";
 import TrustCompliance from "@/components/TrustCompliance";
-import Team from "@/components/Team";
 import BlogPreview from "@/components/BlogPreview";
 import FAQ from "@/components/FAQ";
 import Contact from "@/components/Contact";
@@ -27,7 +26,6 @@ export default function Home() {
       <HowItWorks />
       <Areas />
       <TrustCompliance />
-      <Team />
       <BlogPreview />
       <FAQ />
       <Contact />

@@ -1,5 +1,5 @@
 "use client";
-import { useLayoutEffect, useRef, useState } from "react";
+import { useCallback, useLayoutEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { fadeUp, stagger, viewportOnce } from "@/lib/animations";
 
@@ -43,29 +43,40 @@ export default function OperatingProcess() {
   // gaps, and responsive column widths are in play, so we measure real pixel
   // positions via getBoundingClientRect after layout and position the rail
   // with inline left/width/top. Re-measured on resize to stay aligned.
+  //
+  // Important: each node sits inside a motion.div using the fadeUp variant,
+  // whose "hidden" state is offset by y:36px. Until the section scrolls
+  // into view and that reveal animation finishes, the nodes are still
+  // sitting in that hidden, shifted-down position, so measuring too early
+  // captures the rail ~36px too low — it renders visually below the
+  // circles instead of through their centers. We re-measure once on mount
+  // (best effort for above-the-fold cases), again once the section's
+  // reveal animation has had time to settle after it enters the viewport,
+  // and once more when webfonts finish swapping (can also shift widths).
+  const alignRail = useCallback(() => {
+    const row = rowRef.current;
+    const nodes = nodeRefs.current;
+    const first = nodes[0];
+    const last = nodes[nodes.length - 1];
+    if (!row || !first || !last) return;
+
+    const rowRect = row.getBoundingClientRect();
+    const firstRect = first.getBoundingClientRect();
+    const lastRect = last.getBoundingClientRect();
+
+    const startX = firstRect.left + firstRect.width / 2 - rowRect.left;
+    const endX = lastRect.left + lastRect.width / 2 - rowRect.left;
+    const centerY = firstRect.top + firstRect.height / 2 - rowRect.top;
+
+    setRail({ left: startX, width: Math.max(endX - startX, 0), top: centerY });
+  }, []);
+
   useLayoutEffect(() => {
-    function alignRail() {
-      const row = rowRef.current;
-      const nodes = nodeRefs.current;
-      const first = nodes[0];
-      const last = nodes[nodes.length - 1];
-      if (!row || !first || !last) return;
-
-      const rowRect = row.getBoundingClientRect();
-      const firstRect = first.getBoundingClientRect();
-      const lastRect = last.getBoundingClientRect();
-
-      const startX = firstRect.left + firstRect.width / 2 - rowRect.left;
-      const endX = lastRect.left + lastRect.width / 2 - rowRect.left;
-      const centerY = firstRect.top + firstRect.height / 2 - rowRect.top;
-
-      setRail({ left: startX, width: Math.max(endX - startX, 0), top: centerY });
-    }
-
     alignRail();
     window.addEventListener("resize", alignRail);
+    document.fonts?.ready?.then(alignRail).catch(() => {});
     return () => window.removeEventListener("resize", alignRail);
-  }, []);
+  }, [alignRail]);
 
   return (
     <section
@@ -97,6 +108,13 @@ export default function OperatingProcess() {
           initial="hidden"
           whileInView="visible"
           viewport={viewportOnce}
+          onViewportEnter={() => {
+            // Nodes are still in their shifted-down "hidden" position at the
+            // moment this fires; wait for the fadeUp+stagger reveal to
+            // finish (~1.2s) before re-measuring, so the rail locks onto
+            // the nodes' final resting position, not their entry offset.
+            setTimeout(alignRail, 1300);
+          }}
           className="process-row"
           style={{
             position: "relative",

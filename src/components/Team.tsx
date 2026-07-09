@@ -60,8 +60,8 @@ export default function Team() {
         >
           <p className="eyebrow" style={{ marginBottom: "16px" }}>THE TEAM</p>
           <h2 className="section-heading">
-            OUR{" "}
-            <span style={{ color: "var(--gold)" }}>LEADERSHIP</span>
+            Our{" "}
+            <span style={{ color: "var(--gold)" }}>leadership</span>
           </h2>
         </motion.div>
 
