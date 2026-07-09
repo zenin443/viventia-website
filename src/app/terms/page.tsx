@@ -16,6 +16,8 @@ If you do not agree to these Terms, please do not use our website or services. W
     title: "2. About Viventia Realty Solutions",
     body: `Viventia Realty Solutions is a real estate consultancy firm operating in Dubai, United Arab Emirates. We provide services including property brokerage, property management, international settlement facilitation, and real estate advisory for residential and commercial properties across Dubai.
 
+Viventia Realty Solutions is registered with the Real Estate Regulatory Agency (RERA), Dubai Land Department, under License No. 89000, for the buying and selling of real estate.
+
 Our services are conducted in compliance with Dubai Land Department (DLD) regulations and applicable UAE law.`,
   },
   {
@@ -24,11 +26,9 @@ Our services are conducted in compliance with Dubai Land Department (DLD) regula
 
 **Property Brokerage — Buy & Sell:** We act as intermediary between buyers and sellers of residential and commercial properties in Dubai. Our brokerage services are provided on a commission basis agreed in writing prior to engagement.
 
-**Property Management:** We provide full-service property management including tenant sourcing, lease negotiation, rent collection, maintenance coordination, and periodic reporting.
+**Property Management:** We provide full-service long-term property management including tenant sourcing, lease negotiation, rent collection, maintenance coordination, and periodic reporting.
 
-**Short-Term Rental Management:** We manage short-term and holiday rental listings on behalf of property owners, including pricing, guest management, and cleaning coordination.
-
-**International Settlement Services:** We facilitate the receipt and disbursement of property-related funds in preferred currencies, including USD wire transfers, SWIFT, and stablecoin settlement where applicable and agreed in writing.
+**International Settlement Services:** We help coordinate the receipt and disbursement of property-related funds through approved routes, including AED/bank transfer, USD wire, SWIFT, and approved digital asset settlement where applicable, subject to transaction structure, regulatory requirements, and approval checks.
 
 The scope of services for each engagement is defined in a signed Service Agreement between Viventia Realty Solutions and the client.`,
   },
@@ -172,7 +172,7 @@ export default function TermsPage() {
         {/* Intro callout */}
         <div style={{ padding: "20px 24px", background: "rgba(201,168,76,0.04)", border: "1px solid rgba(201,168,76,0.15)", borderRadius: "10px", marginBottom: "48px" }}>
           <p style={{ fontFamily: "'Raleway', sans-serif", fontSize: "13.5px", color: "rgba(245,240,232,0.6)", lineHeight: 1.8, margin: 0 }}>
-            These Terms govern your use of Viventia Realty Solutions' website and services. By engaging our services or using this website, you agree to these Terms. All services are subject to a separate signed Service Agreement where applicable.
+            These Terms govern your use of Viventia Realty Solutions&apos; website and services. By engaging our services or using this website, you agree to these Terms. All services are subject to a separate signed Service Agreement where applicable.
           </p>
         </div>
 

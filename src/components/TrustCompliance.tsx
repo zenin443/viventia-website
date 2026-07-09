@@ -16,7 +16,7 @@ const TRUST_ITEMS = [
   {
     Icon: BadgeCheck,
     title: "RERA Registered — Dubai",
-    sub: "License No. 89000 · Real Estate Regulatory Agency, Dubai Land Department · Buying & selling of real estate",
+    sub: "Real Estate Regulatory Agency, Dubai Land Department · Buying & selling of real estate",
     featured: true,
   },
   {

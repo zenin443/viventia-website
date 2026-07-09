@@ -28,12 +28,12 @@ const barlowCondensed = Barlow_Condensed({
 export const metadata: Metadata = {
   title: "Viventia Realty Solutions — UAE Property, Operated Globally",
   description:
-    "Viventia Realty Solutions is a premium UAE real estate consultancy. We help international and local clients acquire, operate, exit, and settle UAE property — with cross-border income disbursement via AED, USD wire, SWIFT, or stablecoin.",
+    "Buy, sell, lease, manage, and settle UAE property income with Viventia Realty Solutions — a UAE property operations partner for global investors.",
   keywords: [
     "UAE real estate", "UAE property management", "international property owner UAE",
     "buy property UAE", "sell property UAE", "off-plan UAE",
     "remote property management UAE", "UAE property investment",
-    "stablecoin property settlement", "SWIFT property disbursement",
+    "UAE property settlement support", "SWIFT property disbursement",
     "Dubai real estate", "Abu Dhabi property", "cross-border real estate UAE",
   ],
   icons: {
