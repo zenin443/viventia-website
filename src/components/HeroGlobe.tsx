@@ -226,7 +226,7 @@ export default function HeroGlobe() {
       initial={{ opacity: 0, scale: 0.94 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 1.1, ease: [0.4, 0, 0.2, 1], delay: 0.4 }}
-      style={{ width: "clamp(360px, 46vw, 560px)", position: "relative", perspective: 1000, cursor: "default" }}
+      style={{ width: "clamp(450px, 57vw, 700px)", position: "relative", perspective: 1000, cursor: "default" }}
     >
       <motion.div style={{ rotateX, rotateY, transformStyle: "preserve-3d", display: "flex", flexDirection: "column", alignItems: "center" }}>
         {/* Ambient halo */}

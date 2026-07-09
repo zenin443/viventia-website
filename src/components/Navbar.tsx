@@ -5,7 +5,7 @@ import { Menu, X } from "lucide-react";
 
 const NAV_LINKS = [
   { label: "Buy & Sell",            href: "#pillars" },
-  { label: "Property Management",   href: "#how-it-works" },
+  { label: "Property Management",   href: "#pillars" },
   { label: "International Owners",  href: "#international" },
   { label: "Settlements",           href: "#international" },
   { label: "UAE Areas",             href: "#areas" },

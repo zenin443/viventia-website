@@ -41,7 +41,7 @@ const COLS = [
     heading: "Services",
     links: [
       { label: "Buy & Sell", href: "#pillars" },
-      { label: "Property Management", href: "#how-it-works" },
+      { label: "Property Management", href: "#pillars" },
       { label: "Leasing & Tenancy", href: "#international" },
       { label: "Income Settlement", href: "#international" },
     ],

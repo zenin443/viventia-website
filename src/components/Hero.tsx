@@ -72,8 +72,11 @@ export default function Hero() {
       }}
     >
       {/* ── Background ── */}
+      {/* Note: the ambient gold glow behind the globe now lives inside
+          HeroGlobe itself (centered on the globe), rather than as a
+          separate fixed-position patch here — a standalone patch drifted
+          out of alignment with the globe whenever the layout shifted. */}
       <div aria-hidden="true" style={{ position: "absolute", inset: 0, background: "#000", zIndex: 0 }} />
-      <div aria-hidden="true" style={{ position: "absolute", top: 0, right: "10%", width: "700px", height: "700px", background: "radial-gradient(ellipse, rgba(201,168,76,0.055) 0%, transparent 65%)", pointerEvents: "none", zIndex: 0 }} />
       <div aria-hidden="true" style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(255,255,255,0.016) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.016) 1px, transparent 1px)", backgroundSize: "80px 80px", maskImage: "radial-gradient(ellipse 70% 80% at 60% 40%, black, transparent)", WebkitMaskImage: "radial-gradient(ellipse 70% 80% at 60% 40%, black, transparent)", pointerEvents: "none", zIndex: 0 }} />
 
       {/* ── Main split layout ── */}

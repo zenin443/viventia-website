@@ -16,7 +16,7 @@ const PILLARS = [
     label: "Operate",
     body: "Tenant placement, lease execution, rent collection, inspections, maintenance, renewals, and reporting.",
     cta: "Explore Management",
-    href: "#how-it-works",
+    href: "#pillars",
   },
   {
     n: "03",

@@ -5,7 +5,6 @@ import OwnerHook from "@/components/OwnerHook";
 import ServicePillars from "@/components/ServicePillars";
 import OperatingProcess from "@/components/OperatingProcess";
 import International from "@/components/International";
-import HowItWorks from "@/components/HowItWorks";
 import Areas from "@/components/Areas";
 import TrustCompliance from "@/components/TrustCompliance";
 import BlogPreview from "@/components/BlogPreview";
@@ -23,7 +22,6 @@ export default function Home() {
       <ServicePillars />
       <OperatingProcess />
       <International />
-      <HowItWorks />
       <Areas />
       <TrustCompliance />
       <BlogPreview />
