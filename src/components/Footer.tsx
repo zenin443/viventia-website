@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import SpotlightWordmark from "@/components/SpotlightWordmark";
 
 /* ─── Icons ──────────────────────────────────────────────── */
 function LinkedinIcon() {
@@ -112,14 +111,6 @@ function FooterLink({ href, label }: { href: string; label: string }) {
 export default function Footer() {
   return (
     <footer style={{ background: "#000000", borderTop: "1px solid rgba(201,168,76,0.14)", position: "relative", overflow: "hidden" }}>
-      {/* VIVENTIA background wordmark + cursor spotlight (text-only glow) */}
-      <SpotlightWordmark
-        verticalAlign="58%"
-        restOpacity={0.03}
-        radius={350}
-        scale={1.1}
-      />
-
       {/* Main columns */}
       <div style={{ maxWidth: "1240px", margin: "0 auto", padding: "70px 32px 48px", position: "relative", zIndex: 2 }}>
         <div className="footer-main-grid">
