@@ -104,14 +104,17 @@ export default function OperatingProcess() {
             marginTop: "clamp(56px, 7vw, 96px)",
           }}
         >
-          {/* Pixel-measured gold rail connecting node centers */}
-          <div
+          {/* Pixel-measured gold rail connecting node centers, drawn from node 1 to node 5 */}
+          <motion.div
             aria-hidden="true"
             className="process-rail"
+            initial={{ width: 0 }}
+            whileInView={{ width: rail.width }}
+            viewport={viewportOnce}
+            transition={{ duration: 1.2, delay: 0.35, ease: [0.4, 0, 0.2, 1] }}
             style={{
               position: "absolute",
               left: `${rail.left}px`,
-              width: `${rail.width}px`,
               top: `${rail.top}px`,
               height: "1px",
               background: "linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold))",
