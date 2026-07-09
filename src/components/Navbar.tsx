@@ -4,8 +4,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
 const NAV_LINKS = [
-  { label: "Buy & Sell",            href: "#services" },
-  { label: "Property Management",   href: "#services" },
+  { label: "Buy & Sell",            href: "#pillars" },
+  { label: "Property Management",   href: "#how-it-works" },
   { label: "International Owners",  href: "#international" },
   { label: "Settlements",           href: "#international" },
   { label: "UAE Areas",             href: "#areas" },
@@ -67,45 +67,40 @@ export default function Navbar() {
             justifyContent: "space-between",
           }}
         >
-          {/* ── Logo ── */}
+          {/* ── Logo: V | VIVENTIA main lockup ── */}
           <a
             href="#"
             onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }}
-            style={{ display: "flex", alignItems: "center", gap: "12px", textDecoration: "none", cursor: "pointer" }}
+            style={{ display: "flex", alignItems: "center", gap: "16px", textDecoration: "none", cursor: "pointer" }}
           >
-            <svg width="36" height="36" viewBox="0 0 4096 4096" fill="none" aria-hidden="true">
-              <g fill="#D8B56A" fillRule="evenodd">
-                <path d="M 2954.0 1377.0 L 2467.0 1726.0 L 2095.0 3040.0 L 2139.0 3239.0 Z M 1140.0 1374.0 L 1958.0 3239.0 L 2002.0 3047.0 L 1630.0 1726.0 Z M 900.0 856.0 L 1096.0 1285.0 L 1763.0 1767.0 L 2018.0 2796.0 L 2080.0 2789.0 L 2328.0 1770.0 L 2998.0 1285.0 L 3194.0 868.0 L 2288.0 1435.0 L 2044.0 2749.0 L 1806.0 1438.0 Z" />
-              </g>
-            </svg>
-            <div>
-              <div
-                style={{
-                  fontFamily: "'Copperplate Gothic Light', Copperplate, 'Copperplate Gothic', serif",
-                  fontSize: "16px",
-                  fontWeight: "400",
-                  color: "var(--text)",
-                  letterSpacing: "4px",
-                  lineHeight: "1.1",
-                }}
-              >
-                VIVENTIA
-              </div>
-              <div
-                style={{
-                  fontFamily: "var(--font-body)",
-                  fontSize: "8px",
-                  fontWeight: "700",
-                  color: "rgba(201,168,76,0.72)",
-                  letterSpacing: "3px",
-                  textTransform: "uppercase",
-                  lineHeight: "1",
-                  marginTop: "3px",
-                }}
-              >
-                REALTY SOLUTIONS
-              </div>
-            </div>
+            <span style={{ width: "32px", height: "32px", flexShrink: 0, display: "block" }}>
+              <svg viewBox="0 0 200 194" fill="none" width="32" height="32" aria-hidden="true">
+                <path d="M14,12 L72,55 L94,178 L24,58 Z" fill="url(#navVMarkGrad)" />
+                <path d="M46,58 L86,80 L98,183 L58,80 Z" fill="url(#navVMarkGrad)" />
+                <path d="M186,12 L128,55 L106,178 L176,58 Z" fill="url(#navVMarkGrad)" />
+                <path d="M154,58 L114,80 L102,183 L142,80 Z" fill="url(#navVMarkGrad)" />
+                <defs>
+                  <linearGradient id="navVMarkGrad" x1="0" y1="0" x2="200" y2="194">
+                    <stop offset="0" stopColor="#F0D27A" />
+                    <stop offset="0.5" stopColor="#D8AF52" />
+                    <stop offset="1" stopColor="#B78B2E" />
+                  </linearGradient>
+                </defs>
+              </svg>
+            </span>
+            <span style={{ width: "1px", height: "26px", background: "rgba(216,184,90,0.35)", flexShrink: 0 }} />
+            <span
+              className="gold-text"
+              style={{
+                fontFamily: "var(--font-heading)",
+                fontWeight: 800,
+                fontSize: "19px",
+                letterSpacing: "4px",
+                lineHeight: "1.1",
+              }}
+            >
+              VIVENTIA
+            </span>
           </a>
 
           {/* ── Desktop Nav ── */}

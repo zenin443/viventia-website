@@ -53,10 +53,10 @@ function SettleIcon() {
 }
 
 const TRUST = [
-  { Icon: ShieldIcon,   label: "RERA Licensed"               },
+  { Icon: ShieldIcon,   label: "RERA Registered — Dubai"     },
   { Icon: BuildingIcon, label: "DLD Registered"              },
   { Icon: GlobalIcon,   label: "International Owner Support" },
-  { Icon: SettleIcon,   label: "Wire · SWIFT · Stablecoin"   },
+  { Icon: SettleIcon,   label: "Bank / SWIFT / Digital Asset" },
 ];
 
 export default function Hero() {

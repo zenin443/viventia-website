@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import SpotlightWordmark from "@/components/SpotlightWordmark";
 
 /* ─── Icons ──────────────────────────────────────────────── */
@@ -35,44 +35,36 @@ function XIcon() {
     </svg>
   );
 }
-function ArrowRightIcon() {
-  return (
-    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M5 12h14M12 5l7 7-7 7" />
-    </svg>
-  );
-}
 
 /* ─── Data ───────────────────────────────────────────────── */
 const COLS = [
   {
     heading: "Services",
     links: [
-      { label: "Buy a Property", href: "#services" },
-      { label: "Sell a Property", href: "#services" },
-      { label: "Property Management", href: "#services" },
-      { label: "Short-Term Rentals", href: "#services" },
-      { label: "International Owners", href: "#international" },
+      { label: "Buy & Sell", href: "#pillars" },
+      { label: "Property Management", href: "#how-it-works" },
+      { label: "Leasing & Tenancy", href: "#international" },
+      { label: "Income Settlement", href: "#international" },
     ],
   },
   {
-    heading: "Areas",
+    heading: "UAE Areas",
     links: [
-      { label: "Downtown Dubai", href: "#areas" },
-      { label: "Dubai Marina", href: "#areas" },
-      { label: "Palm Jumeirah", href: "#areas" },
-      { label: "Business Bay", href: "#areas" },
-      { label: "Jumeirah", href: "#areas" },
-      { label: "View All Areas", href: "#areas" },
+      { label: "Dubai", href: "#areas" },
+      { label: "Abu Dhabi", href: "#areas" },
+      { label: "Sharjah", href: "#areas" },
+      { label: "Ajman", href: "#areas" },
+      { label: "Ras Al Khaimah", href: "#areas" },
+      { label: "Fujairah", href: "#areas" },
     ],
   },
   {
     heading: "Company",
     links: [
-      { label: "About Us", href: "/about" },
-      { label: "How It Works", href: "#how-it-works" },
+      { label: "About Viventia", href: "/about" },
+      { label: "Our Process", href: "#process" },
+      { label: "Insights", href: "#blog" },
       { label: "Contact", href: "#contact" },
-      { label: "Client Onboarding", href: "/onboarding" },
     ],
   },
   {
@@ -80,14 +72,17 @@ const COLS = [
     links: [
       { label: "Privacy Policy", href: "/privacy" },
       { label: "Terms of Service", href: "/terms" },
-      { label: "AML Policy", href: "/privacy#aml" },
-      { label: "Cookie Policy", href: "/privacy#cookies" },
+      { label: "Compliance", href: "/privacy" },
+      { label: "Risk Disclosure", href: "/privacy" },
     ],
   },
 ];
 
 const SOCIALS = [
   { Icon: WhatsAppIcon, href: "https://wa.me/971541921968", label: "WhatsApp" },
+  { Icon: LinkedinIcon, href: "#", label: "LinkedIn" },
+  { Icon: XIcon, href: "#", label: "X" },
+  { Icon: InstagramIcon, href: "#", label: "Instagram" },
 ];
 
 /* ─── FooterLink ─────────────────────────────────────────── */
@@ -113,56 +108,6 @@ function FooterLink({ href, label }: { href: string; label: string }) {
   );
 }
 
-/* ─── Newsletter strip ───────────────────────────────────── */
-function NewsletterStrip() {
-  const [email, setEmail] = useState("");
-  const [sent, setSent] = useState(false);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (email) { setSent(true); setEmail(""); }
-  };
-
-  return (
-    <div style={{ borderBottom: "1px solid rgba(255,255,255,0.06)", padding: "40px 0 44px" }}>
-      <div style={{ maxWidth: "1240px", margin: "0 auto", padding: "0 32px", display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: "28px" }}>
-        <div>
-          <div style={{ fontFamily: "var(--font-body)", fontSize: "10px", fontWeight: 700, color: "#C9A84C", letterSpacing: "3px", textTransform: "uppercase", marginBottom: "8px" }}>
-            UAE MARKET UPDATES
-          </div>
-          <h3 style={{ fontFamily: "var(--font-heading)", fontWeight: 300, fontSize: "22px", color: "#F5F0E8", letterSpacing: "2px", margin: 0 }}>
-            Stay ahead of the market.
-          </h3>
-          <p style={{ fontFamily: "var(--font-body)", fontSize: "13px", color: "rgba(245,240,232,0.4)", marginTop: "6px" }}>
-            Quarterly insights on UAE property trends, rates, and investment opportunities.
-          </p>
-        </div>
-        {sent ? (
-          <div style={{ display: "flex", alignItems: "center", gap: "10px", padding: "14px 22px", background: "rgba(201,168,76,0.08)", border: "1px solid rgba(201,168,76,0.25)", borderRadius: "10px" }}>
-            <div style={{ width: "8px", height: "8px", borderRadius: "50%", background: "#C9A84C" }} />
-            <span style={{ fontFamily: "var(--font-body)", fontSize: "13px", color: "#C9A84C", fontWeight: 600, letterSpacing: "1px" }}>You&apos;re on the list.</span>
-          </div>
-        ) : (
-          <form onSubmit={handleSubmit} style={{ display: "flex", gap: "0", background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: "10px", overflow: "hidden", minWidth: "340px" }}>
-            <input
-              type="email" value={email} onChange={e => setEmail(e.target.value)}
-              placeholder="your@email.com" required
-              style={{ flex: 1, background: "none", border: "none", padding: "13px 18px", fontFamily: "var(--font-body)", fontSize: "13px", color: "#F5F0E8", outline: "none" }}
-            />
-            <button type="submit"
-              style={{ background: "#C9A84C", border: "none", padding: "13px 20px", cursor: "pointer", color: "#07090F", display: "flex", alignItems: "center", gap: "6px", fontFamily: "var(--font-body)", fontSize: "12px", fontWeight: 800, letterSpacing: "1px", textTransform: "uppercase", transition: "background 0.2s", flexShrink: 0 }}
-              onMouseEnter={e => (e.currentTarget.style.background = "#e2c570")}
-              onMouseLeave={e => (e.currentTarget.style.background = "#C9A84C")}
-            >
-              Subscribe <ArrowRightIcon />
-            </button>
-          </form>
-        )}
-      </div>
-    </div>
-  );
-}
-
 /* ─── Main Footer ────────────────────────────────────────── */
 export default function Footer() {
   return (
@@ -175,60 +120,54 @@ export default function Footer() {
         scale={1.1}
       />
 
-      <NewsletterStrip />
-
       {/* Main columns */}
-      <div style={{ maxWidth: "1240px", margin: "0 auto", padding: "56px 32px 48px", position: "relative", zIndex: 2 }}>
+      <div style={{ maxWidth: "1240px", margin: "0 auto", padding: "70px 32px 48px", position: "relative", zIndex: 2 }}>
         <div className="footer-main-grid">
           {/* ── Brand column ── */}
           <div style={{ display: "flex", flexDirection: "column", gap: "0" }}>
             <a href="#" onClick={e => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }}
-              style={{ display: "inline-flex", alignItems: "center", gap: "12px", textDecoration: "none", marginBottom: "20px" }}>
-              <svg width="34" height="34" viewBox="0 0 4096 4096" fill="none" aria-hidden="true">
-                <g fill="#D8B56A" fillRule="evenodd">
-                  <path d="M 2954.0 1377.0 L 2467.0 1726.0 L 2095.0 3040.0 L 2139.0 3239.0 Z M 1140.0 1374.0 L 1958.0 3239.0 L 2002.0 3047.0 L 1630.0 1726.0 Z M 900.0 856.0 L 1096.0 1285.0 L 1763.0 1767.0 L 2018.0 2796.0 L 2080.0 2789.0 L 2328.0 1770.0 L 2998.0 1285.0 L 3194.0 868.0 L 2288.0 1435.0 L 2044.0 2749.0 L 1806.0 1438.0 Z" />
-                </g>
-              </svg>
-              <div>
-                <div style={{ fontFamily: "'Copperplate Gothic Light', Copperplate, serif", fontSize: "14px", color: "#F5F0E8", letterSpacing: "3.5px", lineHeight: 1.1 }}>VIVENTIA</div>
-                <div style={{ fontFamily: "var(--font-body)", fontSize: "7.5px", fontWeight: 700, color: "rgba(201,168,76,0.65)", letterSpacing: "2.5px", textTransform: "uppercase", marginTop: "3px" }}>REALTY SOLUTIONS</div>
-              </div>
+              style={{ display: "inline-flex", alignItems: "center", gap: "18px", textDecoration: "none", marginBottom: "26px" }}>
+              <span style={{ width: "40px", height: "40px", flexShrink: 0, display: "block" }}>
+                <svg viewBox="0 0 200 194" fill="none" width="40" height="40" aria-hidden="true">
+                  <path d="M14,12 L72,55 L94,178 L24,58 Z" fill="url(#footerVMarkGrad)" />
+                  <path d="M46,58 L86,80 L98,183 L58,80 Z" fill="url(#footerVMarkGrad)" />
+                  <path d="M186,12 L128,55 L106,178 L176,58 Z" fill="url(#footerVMarkGrad)" />
+                  <path d="M154,58 L114,80 L102,183 L142,80 Z" fill="url(#footerVMarkGrad)" />
+                  <defs>
+                    <linearGradient id="footerVMarkGrad" x1="0" y1="0" x2="200" y2="194">
+                      <stop offset="0" stopColor="#F0D27A" />
+                      <stop offset="0.5" stopColor="#D8AF52" />
+                      <stop offset="1" stopColor="#B78B2E" />
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </span>
+              <span style={{ width: "1px", height: "36px", background: "rgba(216,184,90,0.35)", flexShrink: 0 }} />
+              <span
+                className="gold-text"
+                style={{ fontFamily: "var(--font-heading)", fontWeight: 800, fontSize: "26px", letterSpacing: "5px", lineHeight: "1.1" }}
+              >
+                VIVENTIA
+              </span>
             </a>
 
-            <p style={{ fontFamily: "var(--font-body)", fontSize: "13px", color: "rgba(245,240,232,0.58)", lineHeight: 1.85, maxWidth: "240px", marginBottom: "24px" }}>
-              Premium UAE real estate consultancy for local and international clients. Buy, sell, manage.
+            <p style={{ fontFamily: "var(--font-body)", fontSize: "14px", color: "rgba(245,240,232,0.48)", lineHeight: 1.9, maxWidth: "295px", marginBottom: "26px" }}>
+              UAE property operations for global investors. We help you buy, sell, lease, manage, and settle UAE property income through trusted local execution — wherever you are in the world.
             </p>
 
-            {/* Contact micro-details */}
-            <div style={{ display: "flex", flexDirection: "column", gap: "8px", marginBottom: "24px" }}>
-              <a href="mailto:info@viventiarealtysolutions.com"
-                style={{ fontFamily: "var(--font-body)", fontSize: "12px", color: "rgba(245,240,232,0.60)", textDecoration: "none", transition: "color 0.18s", display: "flex", alignItems: "center", gap: "7px" }}
-                onMouseEnter={e => (e.currentTarget.style.color = "#C9A84C")}
-                onMouseLeave={e => (e.currentTarget.style.color = "rgba(245,240,232,0.60)")}
-              >
-                <span style={{ width: "4px", height: "4px", borderRadius: "50%", background: "rgba(201,168,76,0.5)", flexShrink: 0 }} />
-                info@viventiarealtysolutions.com
-              </a>
-              <span style={{ fontFamily: "var(--font-body)", fontSize: "12px", color: "rgba(245,240,232,0.50)", display: "flex", alignItems: "center", gap: "7px" }}>
-                <span style={{ width: "4px", height: "4px", borderRadius: "50%", background: "rgba(245,240,232,0.30)", flexShrink: 0 }} />
-                Dubai, UAE · GMT+4
-              </span>
-              <span style={{ fontFamily: "var(--font-body)", fontSize: "12px", color: "rgba(245,240,232,0.50)", display: "flex", alignItems: "center", gap: "7px" }}>
-                <span style={{ width: "4px", height: "4px", borderRadius: "50%", background: "rgba(245,240,232,0.30)", flexShrink: 0 }} />
-                Available 7 days · 9am – 9pm
-              </span>
-            </div>
-
             {/* Social icons */}
-            <div style={{ display: "flex", gap: "8px" }}>
+            <div style={{ display: "flex", gap: "12px" }}>
               {SOCIALS.map(({ Icon, href, label }) => (
-                <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label}
-                  style={{ width: "34px", height: "34px", borderRadius: "8px", background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)", display: "flex", alignItems: "center", justifyContent: "center", color: "rgba(245,240,232,0.4)", transition: "all 0.2s" }}
-                  onMouseEnter={e => { e.currentTarget.style.color = "#C9A84C"; e.currentTarget.style.borderColor = "rgba(201,168,76,0.3)"; e.currentTarget.style.background = "rgba(201,168,76,0.07)"; }}
-                  onMouseLeave={e => { e.currentTarget.style.color = "rgba(245,240,232,0.4)"; e.currentTarget.style.borderColor = "rgba(255,255,255,0.08)"; e.currentTarget.style.background = "rgba(255,255,255,0.04)"; }}
-                >
-                  <Icon />
-                </a>
+                <React.Fragment key={label}>
+                  {/* TODO: real social URL */}
+                  <a href={href} target="_blank" rel="noopener noreferrer" aria-label={label}
+                    style={{ width: "36px", height: "36px", borderRadius: "50%", border: "1px solid rgba(216,184,90,0.3)", background: "transparent", display: "flex", alignItems: "center", justifyContent: "center", color: "#C9A84C", transition: "border-color 0.3s ease, background 0.3s ease, transform 0.3s ease" }}
+                    onMouseEnter={e => { e.currentTarget.style.borderColor = "rgba(216,184,90,0.7)"; e.currentTarget.style.background = "rgba(216,184,90,0.08)"; e.currentTarget.style.transform = "translateY(-3px)"; }}
+                    onMouseLeave={e => { e.currentTarget.style.borderColor = "rgba(216,184,90,0.3)"; e.currentTarget.style.background = "transparent"; e.currentTarget.style.transform = "translateY(0)"; }}
+                  >
+                    <Icon />
+                  </a>
+                </React.Fragment>
               ))}
             </div>
           </div>
@@ -236,7 +175,7 @@ export default function Footer() {
           {/* ── Nav columns ── */}
           {COLS.map(col => (
             <div key={col.heading}>
-              <h4 style={{ fontFamily: "var(--font-body)", fontSize: "10px", fontWeight: 700, color: "rgba(245,240,232,0.75)", letterSpacing: "2.5px", textTransform: "uppercase", marginBottom: "18px" }}>
+              <h4 style={{ fontFamily: "var(--font-heading)", fontWeight: 800, fontSize: "10.5px", color: "#C9A84C", letterSpacing: "2px", textTransform: "uppercase", marginBottom: "22px" }}>
                 {col.heading}
               </h4>
               <div style={{ display: "flex", flexDirection: "column" }}>
@@ -266,23 +205,13 @@ export default function Footer() {
             >Terms</a>
           </div>
 
-          {/* Status pill — Resend-inspired */}
-          <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-            <a href="https://wa.me/971541921968" target="_blank" rel="noopener noreferrer"
-              style={{ fontFamily: "var(--font-body)", fontSize: "11px", color: "rgba(245,240,232,0.3)", textDecoration: "none", transition: "color 0.18s", letterSpacing: "0.5px" }}
-              onMouseEnter={e => (e.currentTarget.style.color = "#C9A84C")}
-              onMouseLeave={e => (e.currentTarget.style.color = "rgba(245,240,232,0.3)")}
-            >
-              WhatsApp Us
-            </a>
-            <span style={{ color: "rgba(255,255,255,0.1)", fontSize: "11px" }}>·</span>
-            <div style={{ display: "flex", alignItems: "center", gap: "6px", padding: "4px 10px", background: "rgba(34,197,94,0.08)", border: "1px solid rgba(34,197,94,0.2)", borderRadius: "100px" }}>
-              <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#22c55e", boxShadow: "0 0 6px rgba(34,197,94,0.5)", flexShrink: 0 }} />
-              <span style={{ fontFamily: "var(--font-body)", fontSize: "10px", fontWeight: 700, color: "rgba(34,197,94,0.8)", letterSpacing: "1.5px", textTransform: "uppercase" }}>
-                Accepting Clients
-              </span>
-            </div>
-          </div>
+          <a href="https://wa.me/971541921968" target="_blank" rel="noopener noreferrer"
+            style={{ fontFamily: "var(--font-body)", fontSize: "11.5px", color: "#D8B85A", textDecoration: "none", transition: "color 0.18s", letterSpacing: "0.5px" }}
+            onMouseEnter={e => (e.currentTarget.style.color = "#e2c570")}
+            onMouseLeave={e => (e.currentTarget.style.color = "#D8B85A")}
+          >
+            WhatsApp Us →
+          </a>
         </div>
       </div>
 

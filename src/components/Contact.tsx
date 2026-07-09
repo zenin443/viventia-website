@@ -1,42 +1,17 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
-import { Mail, MapPin, Clock, MessageCircle, CheckCircle } from "lucide-react";
-import { fadeUp, slideFromLeft, slideFromRight, viewportOnce } from "@/lib/animations";
-
-const INFO_ROWS = [
-  {
-    icon: Mail,
-    label: "Email",
-    value: "info@viventiarealtysolutions.com",
-    href: "mailto:info@viventiarealtysolutions.com",
-  },
-  {
-    icon: MapPin,
-    label: "Location",
-    value: "Dubai, United Arab Emirates",
-    href: null,
-  },
-  {
-    icon: MessageCircle,
-    label: "WhatsApp",
-    value: "+971 54 192 1968",
-    href: "https://wa.me/971541921968",
-  },
-  {
-    icon: Clock,
-    label: "Response",
-    value: "Within one business day",
-    href: null,
-  },
-];
+import { MessageCircle, CheckCircle } from "lucide-react";
+import { slideFromLeft, slideFromRight, viewportOnce } from "@/lib/animations";
 
 const SERVICE_OPTIONS = [
-  "Buy a Property",
-  "Sell a Property",
-  "Long-Term Management",
-  "Short-Term / Holiday",
+  "Buy UAE Property",
+  "Sell UAE Property",
+  "Manage My Property",
   "International Owner Services",
+  "Rental Income Settlement",
+  "Sale Proceeds Settlement",
+  "General Enquiry",
 ];
 
 const INPUT_STYLE: React.CSSProperties = {
@@ -49,7 +24,7 @@ const INPUT_STYLE: React.CSSProperties = {
   fontSize: "14px",
   fontFamily: "var(--font-body)",
   outline: "none",
-  transition: "border-color 0.2s",
+  transition: "border-color 0.2s, background 0.2s",
   boxSizing: "border-box" as const,
 };
 
@@ -74,6 +49,21 @@ export default function Contact() {
   });
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [serviceOpen, setServiceOpen] = useState(false);
+
+  const formRef = useRef<HTMLFormElement>(null);
+  const selectRef = useRef<HTMLDivElement>(null);
+
+  // Close the service dropdown when clicking outside it
+  useEffect(() => {
+    const onClickOutside = (e: MouseEvent) => {
+      if (selectRef.current && !selectRef.current.contains(e.target as Node)) {
+        setServiceOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", onClickOutside);
+    return () => document.removeEventListener("mousedown", onClickOutside);
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -100,21 +90,24 @@ export default function Contact() {
   };
 
   const onFocus = (
-    e: React.FocusEvent<
-      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >
+    e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     e.target.style.borderColor = "rgba(201,168,76,0.45)";
     e.target.style.boxShadow = "0 0 0 3px rgba(201,168,76,0.06)";
   };
 
   const onBlur = (
-    e: React.FocusEvent<
-      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >
+    e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     e.target.style.borderColor = "rgba(255,255,255,0.1)";
     e.target.style.boxShadow = "none";
+  };
+
+  const scrollToForm = () => {
+    formRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+    window.setTimeout(() => {
+      document.getElementById("contact-name")?.focus();
+    }, 400);
   };
 
   return (
@@ -125,11 +118,11 @@ export default function Contact() {
         borderTop: "1px solid var(--border)",
       }}
     >
-      <div style={{ maxWidth: "1240px", margin: "0 auto" }}>
+      <div style={{ maxWidth: "var(--max-w)", margin: "0 auto" }}>
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "1fr 1fr",
+            gridTemplateColumns: "1.05fr 1fr",
             gap: "clamp(48px,7vw,100px)",
             alignItems: "start",
           }}
@@ -141,140 +134,66 @@ export default function Contact() {
             initial="hidden"
             whileInView="visible"
             viewport={viewportOnce}
+            style={{ paddingTop: "10px" }}
           >
-            <span className="eyebrow">GET IN TOUCH</span>
+            <span className="eyebrow">READY WHEN YOU ARE</span>
             <h2
               style={{
                 fontFamily: "var(--font-heading)",
-                fontSize: "clamp(32px, 4vw, 52px)",
-                fontWeight: "700",
-                letterSpacing: "-1.5px",
+                fontSize: "clamp(30px, 3.8vw, 44px)",
+                fontWeight: 800,
+                letterSpacing: "0.2px",
+                lineHeight: "1.24",
                 color: "var(--text)",
-                lineHeight: "1.08",
-                margin: "0 0 20px",
+                margin: "0",
               }}
             >
-              Let&apos;s work together
+              Ready to operate your UAE property{" "}
+              <span className="gold-text">without being in the UAE?</span>
             </h2>
             <p
               style={{
                 fontFamily: "var(--font-body)",
-                fontSize: "15px",
+                fontSize: "15.5px",
                 color: "var(--text-2)",
                 lineHeight: "1.85",
-                marginBottom: "48px",
+                maxWidth: "460px",
+                margin: "28px 0 40px",
               }}
             >
-              Whether you are looking to buy, sell, or hand over management of
-              your UAE property — our team is ready to help. Reach out and we
-              will respond within one business day.
+              Start with a private consultation. We review your property,
+              ownership goals, management needs, and preferred settlement
+              route before onboarding begins.
             </p>
 
-            {/* Info rows */}
             <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                gap: "0",
-                marginBottom: "40px",
-              }}
+              style={{ display: "flex", gap: "14px", flexWrap: "wrap" }}
             >
-              {INFO_ROWS.map(({ icon: Icon, label, value, href }, i) => (
-                <div
-                  key={label}
-                  style={{
-                    display: "flex",
-                    alignItems: "flex-start",
-                    gap: "16px",
-                    padding: "16px 0",
-                    borderBottom:
-                      i < INFO_ROWS.length - 1
-                        ? "1px solid var(--border)"
-                        : "none",
-                  }}
-                >
-                  <div
-                    style={{
-                      width: "36px",
-                      height: "36px",
-                      borderRadius: "9px",
-                      background: "rgba(201,168,76,0.07)",
-                      border: "1px solid rgba(201,168,76,0.15)",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      color: "var(--gold)",
-                      flexShrink: 0,
-                    }}
-                  >
-                    <Icon size={15} />
-                  </div>
-                  <div>
-                    <div
-                      style={{
-                        fontFamily: "var(--font-body)",
-                        fontSize: "10px",
-                        fontWeight: "700",
-                        color: "var(--text-3)",
-                        letterSpacing: "1.2px",
-                        textTransform: "uppercase",
-                        marginBottom: "3px",
-                      }}
-                    >
-                      {label}
-                    </div>
-                    {href ? (
-                      <a
-                        href={href}
-                        style={{
-                          fontFamily: "var(--font-body)",
-                          fontSize: "14px",
-                          color: "var(--text)",
-                          transition: "color 0.2s",
-                          cursor: "pointer",
-                        }}
-                        onMouseEnter={(e) =>
-                          (e.currentTarget.style.color = "var(--gold)")
-                        }
-                        onMouseLeave={(e) =>
-                          (e.currentTarget.style.color = "var(--text)")
-                        }
-                      >
-                        {value}
-                      </a>
-                    ) : (
-                      <div
-                        style={{
-                          fontFamily: "var(--font-body)",
-                          fontSize: "14px",
-                          color: "var(--text-2)",
-                        }}
-                      >
-                        {value}
-                      </div>
-                    )}
-                  </div>
-                </div>
-              ))}
+              <button
+                type="button"
+                onClick={scrollToForm}
+                className="btn-gold"
+                style={{ cursor: "pointer" }}
+              >
+                Book Private Consultation
+              </button>
+              <a
+                href="https://wa.me/971541921968"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-ghost"
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "8px",
+                  textDecoration: "none",
+                  cursor: "pointer",
+                }}
+              >
+                <MessageCircle size={16} />
+                WhatsApp Us
+              </a>
             </div>
-
-            {/* WhatsApp CTA */}
-            <a
-              href="https://wa.me/971541921968"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-gold"
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "8px",
-                textDecoration: "none",
-                cursor: "pointer",
-              }}
-            >
-              <MessageCircle size={16} />
-              Chat on WhatsApp
-            </a>
           </motion.div>
 
           {/* ── Right column — form ── */}
@@ -294,7 +213,7 @@ export default function Contact() {
                   padding: "60px 40px",
                   background: "rgba(201,168,76,0.04)",
                   border: "1px solid rgba(201,168,76,0.2)",
-                  borderRadius: "16px",
+                  borderRadius: "14px",
                   textAlign: "center",
                 }}
               >
@@ -311,14 +230,14 @@ export default function Contact() {
                 <h3
                   style={{
                     fontFamily: "var(--font-heading)",
-                    fontSize: "24px",
-                    fontWeight: "700",
+                    fontSize: "22px",
+                    fontWeight: "800",
                     color: "var(--text)",
-                    letterSpacing: "-0.5px",
+                    letterSpacing: "-0.2px",
                     marginBottom: "12px",
                   }}
                 >
-                  Message received
+                  Enquiry received
                 </h3>
                 <p
                   style={{
@@ -326,12 +245,13 @@ export default function Contact() {
                     fontSize: "14px",
                     color: "var(--text-2)",
                     lineHeight: "1.75",
-                    maxWidth: "320px",
+                    maxWidth: "340px",
                     margin: "0 auto 24px",
                   }}
                 >
-                  Our team will be in touch within one business day. You can
-                  also reach us directly at{" "}
+                  Our team will review your requirement and be in touch
+                  within one business day to arrange your private
+                  consultation. You can also reach us directly at{" "}
                   <a
                     href="mailto:info@viventiarealtysolutions.com"
                     style={{ color: "var(--gold)", cursor: "pointer" }}
@@ -347,23 +267,38 @@ export default function Contact() {
                   className="btn-ghost"
                   style={{ cursor: "pointer", fontSize: "12px" }}
                 >
-                  Send another message
+                  Send another enquiry
                 </button>
               </motion.div>
             ) : (
               /* Form */
               <form
+                ref={formRef}
                 onSubmit={handleSubmit}
                 style={{
                   padding: "40px",
-                  background: "rgba(255,255,255,0.02)",
-                  border: "1px solid var(--border)",
-                  borderRadius: "16px",
+                  background:
+                    "linear-gradient(180deg, rgba(255,255,255,0.025), rgba(255,255,255,0.008))",
+                  border: "1px solid rgba(201,168,76,0.16)",
+                  borderRadius: "14px",
                   display: "flex",
                   flexDirection: "column",
                   gap: "20px",
                 }}
               >
+                <h3
+                  style={{
+                    fontFamily: "var(--font-heading)",
+                    fontSize: "19px",
+                    fontWeight: "800",
+                    color: "var(--text)",
+                    letterSpacing: "0.1px",
+                    margin: "0",
+                  }}
+                >
+                  Tell us about your UAE property requirement.
+                </h3>
+
                 {/* Name + Email row */}
                 <div
                   style={{
@@ -381,7 +316,7 @@ export default function Contact() {
                       id="contact-name"
                       type="text"
                       required
-                      placeholder="Your name"
+                      placeholder="Your full name"
                       value={form.name}
                       onChange={(e) =>
                         setForm({ ...form, name: e.target.value })
@@ -411,10 +346,10 @@ export default function Contact() {
                   </div>
                 </div>
 
-                {/* Phone */}
+                {/* Phone / WhatsApp */}
                 <div>
                   <label style={LABEL_STYLE} htmlFor="contact-phone">
-                    Phone
+                    Phone / WhatsApp
                   </label>
                   <input
                     id="contact-phone"
@@ -430,34 +365,134 @@ export default function Contact() {
                   />
                 </div>
 
-                {/* Service dropdown */}
-                <div>
+                {/* Service Interest — custom-styled dropdown (native <select> popups
+                    cannot be themed and rendered as an unstyled browser list against
+                    this dark UI) */}
+                <div ref={selectRef} style={{ position: "relative" }}>
                   <label style={LABEL_STYLE} htmlFor="contact-service">
-                    Service
+                    Service Interest
                   </label>
-                  <select
+                  <div
                     id="contact-service"
-                    value={form.service}
-                    onChange={(e) =>
-                      setForm({ ...form, service: e.target.value })
-                    }
-                    style={{ ...INPUT_STYLE, cursor: "pointer" }}
-                    onFocus={onFocus}
-                    onBlur={onBlur}
+                    role="button"
+                    tabIndex={0}
+                    aria-haspopup="listbox"
+                    aria-expanded={serviceOpen}
+                    onClick={() => setServiceOpen((v) => !v)}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter" || e.key === " ") {
+                        e.preventDefault();
+                        setServiceOpen((v) => !v);
+                      } else if (e.key === "Escape") {
+                        setServiceOpen(false);
+                      }
+                    }}
+                    style={{
+                      ...INPUT_STYLE,
+                      cursor: "pointer",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                      gap: "10px",
+                      borderColor: serviceOpen
+                        ? "rgba(201,168,76,0.45)"
+                        : "rgba(255,255,255,0.1)",
+                      background: serviceOpen
+                        ? "rgba(201,168,76,0.06)"
+                        : "rgba(255,255,255,0.04)",
+                      boxShadow: serviceOpen
+                        ? "0 0 0 3px rgba(201,168,76,0.06)"
+                        : "none",
+                    }}
                   >
-                    <option value="" style={{ background: "#111520" }}>
-                      Select a service
-                    </option>
-                    {SERVICE_OPTIONS.map((opt) => (
-                      <option
-                        key={opt}
-                        value={opt}
-                        style={{ background: "#111520" }}
-                      >
-                        {opt}
-                      </option>
-                    ))}
-                  </select>
+                    <span
+                      style={{
+                        color: form.service ? "var(--text)" : "var(--text-3)",
+                      }}
+                    >
+                      {form.service || "Select a service"}
+                    </span>
+                    <span
+                      aria-hidden="true"
+                      style={{
+                        width: "8px",
+                        height: "8px",
+                        borderRight: "1.5px solid var(--gold)",
+                        borderBottom: "1.5px solid var(--gold)",
+                        transform: serviceOpen
+                          ? "rotate(-135deg) translate(1px, 1px)"
+                          : "rotate(45deg)",
+                        transition: "transform 0.25s ease",
+                        flexShrink: 0,
+                      }}
+                    />
+                  </div>
+
+                  {serviceOpen && (
+                    <div
+                      role="listbox"
+                      aria-label="Service Interest"
+                      style={{
+                        position: "absolute",
+                        left: 0,
+                        right: 0,
+                        top: "calc(100% + 8px)",
+                        background: "#0a0a0a",
+                        border: "1px solid rgba(201,168,76,0.25)",
+                        borderRadius: "10px",
+                        boxShadow: "0 20px 44px -12px rgba(0,0,0,0.6)",
+                        overflow: "hidden",
+                        zIndex: 20,
+                      }}
+                    >
+                      {SERVICE_OPTIONS.map((opt) => {
+                        const active = form.service === opt;
+                        return (
+                          <div
+                            key={opt}
+                            role="option"
+                            aria-selected={active}
+                            tabIndex={0}
+                            onClick={() => {
+                              setForm((f) => ({ ...f, service: opt }));
+                              setServiceOpen(false);
+                            }}
+                            onKeyDown={(e) => {
+                              if (e.key === "Enter" || e.key === " ") {
+                                e.preventDefault();
+                                setForm((f) => ({ ...f, service: opt }));
+                                setServiceOpen(false);
+                              }
+                            }}
+                            style={{
+                              padding: "12px 16px",
+                              fontFamily: "var(--font-body)",
+                              fontSize: "14px",
+                              color: active ? "#f5e296" : "var(--text-2)",
+                              background: active
+                                ? "rgba(201,168,76,0.12)"
+                                : "transparent",
+                              cursor: "pointer",
+                              transition: "background 0.15s ease, color 0.15s ease",
+                            }}
+                            onMouseEnter={(e) => {
+                              e.currentTarget.style.background =
+                                "rgba(201,168,76,0.14)";
+                              e.currentTarget.style.color = "#f5e296";
+                            }}
+                            onMouseLeave={(e) => {
+                              if (!active) {
+                                e.currentTarget.style.background = "transparent";
+                                e.currentTarget.style.color = "var(--text-2)";
+                              }
+                            }}
+                          >
+                            {opt}
+                          </div>
+                        );
+                      })}
+                    </div>
+                  )}
                 </div>
 
                 {/* Message */}
@@ -467,8 +502,8 @@ export default function Contact() {
                   </label>
                   <textarea
                     id="contact-message"
-                    rows={5}
-                    placeholder="Tell us about your property or requirements..."
+                    rows={4}
+                    placeholder="Tell us a little about your property or requirement..."
                     value={form.message}
                     onChange={(e) =>
                       setForm({ ...form, message: e.target.value })
@@ -476,7 +511,7 @@ export default function Contact() {
                     style={{
                       ...INPUT_STYLE,
                       resize: "vertical",
-                      minHeight: "120px",
+                      minHeight: "100px",
                       lineHeight: "1.6",
                     }}
                     onFocus={onFocus}
@@ -498,7 +533,7 @@ export default function Contact() {
                     opacity: submitting ? 0.7 : 1,
                   }}
                 >
-                  {submitting ? "SENDING..." : "Send Message"}
+                  {submitting ? "SENDING..." : "Submit Enquiry"}
                 </button>
 
                 <p

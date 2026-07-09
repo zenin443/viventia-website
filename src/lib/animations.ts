@@ -38,4 +38,8 @@ export const slideFromRight: Variants = {
   visible: { opacity: 1, x: 0, transition: { duration: 0.65, ease } },
 };
 
-export const viewportOnce = { once: true, margin: "-80px" } as const;
+// margin uses a small negative bottom offset (not a large negative top offset) so
+// sections reveal just before they're fully in view instead of sitting blank during
+// a normal-speed scroll — a large "-80px" on all sides delayed reveal too long and
+// produced visible blank gaps between sections on fast scroll.
+export const viewportOnce = { once: true, margin: "0px 0px -10% 0px" } as const;

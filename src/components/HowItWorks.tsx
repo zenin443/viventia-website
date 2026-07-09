@@ -70,8 +70,8 @@ const TAB_STEPS: Record<TabKey, { num: string; title: string; desc: string }[]> 
     },
     {
       num: "04",
-      title: "Global Disbursement",
-      desc: "Your rental income is sent to your account abroad — USD wire to the US, SWIFT to UK/EU, or stablecoins to your crypto wallet.",
+      title: "Global Settlement",
+      desc: "Your rental income is routed to your preferred approved banking or digital asset channel — USD wire, SWIFT, or approved digital asset settlement where applicable.",
     },
   ],
 };
@@ -312,9 +312,9 @@ export default function HowItWorks() {
                       <line x1="21" y1="19.5" x2="17" y2="16.5" stroke="#C9A84C" strokeWidth="1.1" strokeLinecap="round" opacity="0.8"/>
                     </svg>
                   ),
-                  title: "Crypto Settlement",
-                  sub: "USDT · USDC · On-chain transfer",
-                  note: "Pay or receive in stablecoins. We handle conversion and disbursement at closing.",
+                  title: "Digital Asset Settlement",
+                  sub: "USDT / USDC — approved channels",
+                  note: "Digital asset settlement support where applicable, subject to transaction structure, regulatory requirements, and approval checks.",
                 },
                 {
                   icon: (
@@ -322,9 +322,9 @@ export default function HowItWorks() {
                       <path d="M15 3 L9 15 L13.5 15 L11 25 L20 12 L15 12 L19 3 Z" stroke="#C9A84C" strokeWidth="1.5" strokeLinejoin="round" strokeLinecap="round" fill="none"/>
                     </svg>
                   ),
-                  title: "Instant Wire",
-                  sub: "USD · AED · Same-day settlement",
-                  note: "Funds transferred on DLD registration day — no delays, no holding periods.",
+                  title: "Bank Wire",
+                  sub: "USD · AED · Wire transfer",
+                  note: "Funds transferred through standard banking channels on DLD registration day, subject to transaction structure and approval checks.",
                 },
               ].map((item, i) => (
                 <div
