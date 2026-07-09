@@ -204,64 +204,6 @@ function PlexusGlobeSVG() {
   );
 }
 
-/* ── UAE Skyline — detailed ground frame ── */
-function SkylineFrame() {
-  return (
-    <svg viewBox="0 0 940 80" width="100%" height={80} fill="none" preserveAspectRatio="xMidYMax meet" aria-hidden="true">
-      {/* Distant background layer */}
-      <g fill="rgba(201,168,76,0.06)">
-        {([
-          [0,45,20],[28,36,18],[58,44,18],[86,26,18],[112,40,16],[136,22,18],
-          [162,38,16],[188,30,16],[212,44,16],
-          [820,34,16],[845,42,16],[868,48,14],[890,30,16],[912,40,14],
-        ] as [number,number,number][]).map(([x,y,w],i) => (
-          <rect key={i} x={x} y={y} width={w} height={80 - y} />
-        ))}
-      </g>
-
-      {/* Mid towers */}
-      <g fill="rgba(201,168,76,0.13)">
-        <rect x={238} y={24} width={20} height={56} />
-        <rect x={266} y={16} width={18} height={64} />
-        {/* Emirates Towers */}
-        <polygon points="294,80 294,30 305,12 316,30 316,80" />
-        <polygon points="322,80 322,38 332,24 342,38 342,80" />
-        {/* Address Downtown */}
-        <rect x={350} y={20} width={28} height={60} />
-        <rect x={354} y={14} width={20} height={6} />
-        <line x1={364} y1={14} x2={364} y2={4} stroke="rgba(201,168,76,0.2)" strokeWidth="1" />
-        {/* JBR towers */}
-        <rect x={648} y={14} width={16} height={66} />
-        <rect x={672} y={20} width={16} height={60} />
-        {/* Marina towers */}
-        <rect x={698} y={12} width={17} height={68} />
-        <rect x={720} y={18} width={17} height={62} />
-        {/* Princess Tower */}
-        <polygon points="745,80 745,6 755,0 765,6 765,80" />
-        {/* Gate towers */}
-        <rect x={785} y={28} width={18} height={52} />
-        <rect x={810} y={22} width={18} height={58} />
-      </g>
-
-      {/* Hero landmarks */}
-      <g fill="rgba(201,168,76,0.22)">
-        {/* Burj Khalifa */}
-        <polygon points="
-          535,80 535,62 538,54 541,43 543,30 545,18 547,8
-          549,3 551,8 553,18 555,30 557,43 559,54 562,62 562,80
-        " />
-        {/* Burj Al Arab */}
-        <path d="M 832,80 L 832,30 Q 844,8 858,3 L 868,3 Q 873,7 873,16 L 873,80 Z" />
-        <line x1={844} y1={3} x2={864} y2={3} stroke="rgba(201,168,76,0.40)" strokeWidth="0.8" />
-      </g>
-
-      {/* Ground line with subtle glow */}
-      <line x1="0" y1="79" x2="940" y2="79" stroke="rgba(201,168,76,0.35)" strokeWidth="0.8" />
-      <line x1="0" y1="79" x2="940" y2="79" stroke="rgba(201,168,76,0.10)" strokeWidth="3" />
-    </svg>
-  );
-}
-
 /* ── Main exported component ── */
 export default function HeroGlobe() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -293,11 +235,6 @@ export default function HeroGlobe() {
         {/* Globe SVG */}
         <div style={{ width: "100%", position: "relative", zIndex: 1 }}>
           <PlexusGlobeSVG />
-        </div>
-
-        {/* Skyline */}
-        <div style={{ width: "108%", marginLeft: "-4%", marginTop: "-16px", position: "relative", zIndex: 0, opacity: 0.92 }}>
-          <SkylineFrame />
         </div>
       </motion.div>
     </motion.div>
