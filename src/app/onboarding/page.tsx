@@ -197,7 +197,7 @@ export default function OnboardingPage() {
       if (!res.ok) throw new Error("Submission failed");
       setSubmitted(true);
     } catch {
-      setError("Something went wrong. Please email us directly at info@viventiarealtysolutions.com");
+      setError("Something went wrong. Please email us directly at info@viventiarealty.com");
     } finally {
       setSubmitting(false);
     }

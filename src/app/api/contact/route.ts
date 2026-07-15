@@ -6,14 +6,14 @@ export async function POST(req: NextRequest) {
 
     const resendKey = process.env.RESEND_API_KEY;
     const notifyEmail =
-      process.env.NOTIFY_EMAIL || "info@viventiarealtysolutions.com";
+      process.env.NOTIFY_EMAIL || "info@viventiarealty.com";
 
     if (resendKey) {
       const { Resend } = await import("resend");
       const resend = new Resend(resendKey);
 
       await resend.emails.send({
-        from: "Viventia Contact <contact@viventiarealtysolutions.com>",
+        from: "Viventia Contact <info@viventiarealty.com>",
         to: notifyEmail,
         subject: `New Contact Enquiry — ${name}`,
         html: notificationHtml({ name, email, phone, service, message }),
@@ -21,7 +21,7 @@ export async function POST(req: NextRequest) {
 
       if (email) {
         await resend.emails.send({
-          from: "Viventia Realty Solutions <contact@viventiarealtysolutions.com>",
+          from: "Viventia Realty Solutions <info@viventiarealty.com>",
           to: email,
           subject: "We received your message — Viventia Realty Solutions",
           html: autoReplyHtml(name),
