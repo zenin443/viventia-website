@@ -1,3 +1,10 @@
+export type BlogImageVariant = "skyline" | "globe" | "linework";
+
+export interface BlogHighlight {
+  label: string;
+  value: string;
+}
+
 export interface BlogPost {
   slug: string;
   title: string;
@@ -6,6 +13,10 @@ export interface BlogPost {
   readTime: string;
   category: string;
   content: string;
+  image: BlogImageVariant;
+  author: string;
+  tags: string[];
+  highlights: BlogHighlight[];
 }
 
 export const blogPosts: BlogPost[] = [
@@ -17,6 +28,14 @@ export const blogPosts: BlogPost[] = [
     date: "July 2026",
     readTime: "5 min read",
     category: "Market Insights",
+    image: "skyline",
+    author: "Viventia Research Team",
+    tags: ["Transaction Volumes", "Off-Plan", "Golden Visa", "Rental Yields"],
+    highlights: [
+      { label: "2025 Dubai Transactions", value: "180,000+" },
+      { label: "Year-on-Year Growth", value: "22%" },
+      { label: "JVC/JVT Gross Yields", value: "7–9%" },
+    ],
     content: `
       <h2>A Market in Full Stride</h2>
       <p>The UAE property market entered 2026 with remarkable momentum. Dubai recorded over 180,000 transactions in 2025 — a 22% year-on-year increase — while Abu Dhabi saw a surge in off-plan launches from developers including Aldar and Bloom. The fundamentals driving this growth are structural, not speculative.</p>
@@ -37,6 +56,14 @@ export const blogPosts: BlogPost[] = [
     date: "June 2026",
     readTime: "7 min read",
     category: "Visa & Residency",
+    image: "linework",
+    author: "Viventia Research Team",
+    tags: ["Golden Visa", "Residency", "Property Investment", "Eligibility"],
+    highlights: [
+      { label: "Minimum Property Value", value: "AED 2,000,000" },
+      { label: "Visa Duration", value: "10 Years" },
+      { label: "Processing Timeline", value: "4–8 Weeks" },
+    ],
     content: `
       <h2>What Is the Golden Visa?</h2>
       <p>The UAE Golden Visa is a long-term residency programme introduced in 2019 and significantly expanded in 2022. It grants 5 or 10-year renewable residency to investors, entrepreneurs, skilled professionals, and their immediate families. For property investors, the 10-year visa requires a minimum property value of AED 2,000,000 (approximately USD 544,000).</p>
@@ -56,6 +83,14 @@ export const blogPosts: BlogPost[] = [
     date: "May 2026",
     readTime: "4 min read",
     category: "Settlement & Finance",
+    image: "globe",
+    author: "Viventia Research Team",
+    tags: ["Settlement", "International Owners", "USDT/USDC", "Cross-Border Payments"],
+    highlights: [
+      { label: "Traditional Transfer Time", value: "3–5 Business Days" },
+      { label: "Typical FX/Wire Cost", value: "1–3%" },
+      { label: "Stablecoin Settlement Time", value: "Within Hours" },
+    ],
     content: `
       <h2>The Problem With Traditional Disbursement</h2>
       <p>A UK-based landlord owning a one-bedroom in Dubai Marina can expect their rental income to travel through 3–4 correspondent banks before arriving in a British current account — a journey that typically takes 3–5 business days and costs 1–3% in FX and wire fees. Multiply this across a portfolio of properties and the friction compounds significantly.</p>

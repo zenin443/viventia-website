@@ -1,6 +1,11 @@
 import Link from "next/link";
 import { getBlogPost, blogPosts } from "@/lib/blog-data";
 import { notFound } from "next/navigation";
+import { ArticleHero } from "@/components/blog/ArticleHero";
+import { TableOfContents } from "@/components/blog/TableOfContents";
+import { HighlightCard } from "@/components/blog/HighlightCard";
+import { RelatedInsights } from "@/components/blog/RelatedInsights";
+import { prepareArticleContent } from "@/lib/blog-toc";
 
 export async function generateStaticParams() {
   return blogPosts.map((p) => ({ slug: p.slug }));
@@ -28,6 +33,9 @@ export default async function BlogPostPage({
   const { slug } = await params;
   const post = getBlogPost(slug);
   if (!post) notFound();
+
+  const { html, toc } = prepareArticleContent(post.content);
+  const hasSidebar = toc.length > 0 || post.highlights.length > 0;
 
   return (
     <main
@@ -62,84 +70,43 @@ export default async function BlogPostPage({
       {/* Article */}
       <article
         style={{
-          maxWidth: 720,
+          maxWidth: 1080,
           margin: "0 auto",
           padding: "clamp(48px, 7vw, 88px) 32px clamp(80px, 10vw, 140px)",
         }}
       >
-        {/* Meta */}
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            flexWrap: "wrap",
-            gap: 12,
-            marginBottom: 28,
-          }}
-        >
-          <span
-            style={{
-              display: "inline-block",
-              fontSize: 10,
-              fontWeight: 600,
-              letterSpacing: "0.15em",
-              textTransform: "uppercase",
-              color: "var(--gold)",
-              background: "rgba(201,168,76,0.1)",
-              border: "1px solid var(--border-gold)",
-              borderRadius: 4,
-              padding: "3px 10px",
-            }}
-          >
-            {post.category}
-          </span>
-          <span style={{ fontSize: 12, color: "rgba(245,240,232,0.4)" }}>
-            {post.date}
-          </span>
-          <span style={{ color: "rgba(245,240,232,0.2)", fontSize: 12 }}>·</span>
-          <span style={{ fontSize: 12, color: "rgba(245,240,232,0.4)" }}>
-            {post.readTime}
-          </span>
+        <ArticleHero post={post} />
+
+        <div className={`article-body-grid${hasSidebar ? "" : " article-body-grid--no-sidebar"}`}>
+          <div
+            dangerouslySetInnerHTML={{ __html: html }}
+            style={
+              {
+                fontSize: 16,
+                lineHeight: 1.8,
+                color: "rgba(245,240,232,0.82)",
+              } as React.CSSProperties
+            }
+            className="blog-prose"
+          />
+
+          {hasSidebar && (
+            <aside className="article-sidebar">
+              <TableOfContents toc={toc} />
+
+              {post.highlights.length > 0 && (
+                <div className="article-highlights">
+                  <p className="article-sidebar-label">Key Figures</p>
+                  <div className="article-highlights-list">
+                    {post.highlights.map((h) => (
+                      <HighlightCard key={h.label} label={h.label} value={h.value} />
+                    ))}
+                  </div>
+                </div>
+              )}
+            </aside>
+          )}
         </div>
-
-        {/* Title */}
-        <h1
-          style={{
-            fontSize: "clamp(32px, 5vw, 52px)",
-            fontWeight: 700,
-            color: "#f5f0e8",
-            lineHeight: 1.12,
-            marginBottom: 48,
-            letterSpacing: "-0.01em",
-          }}
-        >
-          {post.title}
-        </h1>
-
-        {/* Divider */}
-        <div
-          style={{
-            height: 1,
-            background:
-              "linear-gradient(90deg, var(--gold) 0%, rgba(201,168,76,0) 100%)",
-            marginBottom: 48,
-            opacity: 0.35,
-          }}
-        />
-
-        {/* Content prose */}
-        <div
-          dangerouslySetInnerHTML={{ __html: post.content }}
-          style={
-            {
-              fontSize: 16,
-              lineHeight: 1.8,
-              color: "rgba(245,240,232,0.82)",
-              "--prose-heading": "var(--gold)",
-            } as React.CSSProperties
-          }
-          className="blog-prose"
-        />
 
         {/* Bottom CTA */}
         <div
@@ -202,9 +169,60 @@ export default async function BlogPostPage({
             Start Onboarding
           </Link>
         </div>
+
+        <RelatedInsights posts={blogPosts} currentSlug={post.slug} />
       </article>
 
       <style>{`
+        .article-body-grid {
+          display: grid;
+          grid-template-columns: 1fr 280px;
+          gap: 56px;
+          align-items: start;
+        }
+        .article-body-grid--no-sidebar {
+          grid-template-columns: 1fr;
+        }
+        .article-sidebar {
+          position: sticky;
+          top: 32px;
+          display: flex;
+          flex-direction: column;
+          gap: 32px;
+        }
+        .article-sidebar-label {
+          font-size: 10px;
+          font-weight: 600;
+          letter-spacing: 0.15em;
+          text-transform: uppercase;
+          color: rgba(245,240,232,0.55);
+          margin-bottom: 12px;
+        }
+        .article-highlights-list {
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+        }
+
+        @media (max-width: 900px) {
+          .article-body-grid {
+            grid-template-columns: minmax(0, 1fr);
+          }
+          .article-sidebar {
+            position: static;
+            order: -1;
+          }
+          .article-highlights-list {
+            flex-direction: row;
+            overflow-x: auto;
+            padding-bottom: 4px;
+          }
+          .article-highlights-list > div {
+            min-width: 160px;
+            flex: none;
+          }
+        }
+
         .blog-prose h2 {
           font-size: clamp(20px, 3vw, 26px);
           font-weight: 700;
@@ -240,6 +258,15 @@ export default async function BlogPostPage({
         }
         .blog-prose li {
           margin-bottom: 0.4em;
+        }
+        .blog-prose blockquote {
+          margin: 2em 0;
+          padding: 20px 24px;
+          border-left: 3px solid var(--gold);
+          background: var(--bg-card);
+          font-size: 18px;
+          font-style: italic;
+          color: #f5f0e8;
         }
       `}</style>
     </main>
