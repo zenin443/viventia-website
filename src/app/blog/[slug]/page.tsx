@@ -77,7 +77,7 @@ export default async function BlogPostPage({
       >
         <ArticleHero post={post} />
 
-        <div className="article-body-grid">
+        <div className={`article-body-grid${hasSidebar ? "" : " article-body-grid--no-sidebar"}`}>
           <div
             dangerouslySetInnerHTML={{ __html: html }}
             style={
@@ -179,6 +179,9 @@ export default async function BlogPostPage({
           grid-template-columns: 1fr 280px;
           gap: 56px;
           align-items: start;
+        }
+        .article-body-grid--no-sidebar {
+          grid-template-columns: 1fr;
         }
         .article-sidebar {
           position: sticky;
