@@ -253,10 +253,10 @@ export default function Contact() {
                   within one business day to arrange your private
                   consultation. You can also reach us directly at{" "}
                   <a
-                    href="mailto:info@viventiarealtysolutions.com"
+                    href="mailto:info@viventiarealty.com"
                     style={{ color: "var(--gold)", cursor: "pointer" }}
                   >
-                    info@viventiarealtysolutions.com
+                    info@viventiarealty.com
                   </a>
                 </p>
                 <button

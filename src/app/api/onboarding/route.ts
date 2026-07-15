@@ -23,14 +23,14 @@ export async function POST(req: NextRequest) {
     const text = buildEmailText(data, fileEntries);
 
     const resendKey = process.env.RESEND_API_KEY;
-    const notifyEmail = process.env.NOTIFY_EMAIL || "info@viventiarealtysolutions.com";
+    const notifyEmail = process.env.NOTIFY_EMAIL || "info@viventiarealty.com";
 
     if (resendKey) {
       const { Resend } = await import("resend");
       const resend = new Resend(resendKey);
 
       await resend.emails.send({
-        from: "Viventia Onboarding <onboarding@viventiarealtysolutions.com>",
+        from: "Viventia Onboarding <onboarding@viventiarealty.com>",
         to: notifyEmail,
         subject: `New Client Application — ${data.clientType === "individual" ? data.fullName : data.companyName} (${new Date().toLocaleDateString("en-GB")})`,
         html,
@@ -40,7 +40,7 @@ export async function POST(req: NextRequest) {
       // Auto-reply to the applicant
       if (data.email) {
         await resend.emails.send({
-          from: "Viventia Realty Solutions <onboarding@viventiarealtysolutions.com>",
+          from: "Viventia Realty Solutions <onboarding@viventiarealty.com>",
           to: data.email,
           subject: "Your application has been received — Viventia Realty Solutions",
           html: autoReplyHtml(data),
@@ -146,7 +146,7 @@ function autoReplyHtml(data: Record<string, unknown>): string {
       <p style="font-family:'Arial',sans-serif;font-size:13px;color:#666;margin:0;line-height:1.7;">
         <strong style="color:#1a1a2e;">Viventia Realty Solutions</strong><br>
         Dubai, United Arab Emirates<br>
-        www.viventiarealtysolutions.com
+        www.viventiarealty.com
       </p>
     </div>
     <p style="font-family:'Arial',sans-serif;font-size:11px;color:#aaa;margin:0;">This is a confidential communication. All data is handled under UAE PDPL.</p>

@@ -113,7 +113,7 @@ Following the retention period, data is securely deleted or anonymised.`,
 
 **Right to Withdraw Consent:** Where processing is based on consent, you may withdraw it at any time without affecting prior processing.
 
-To exercise any of these rights, please contact us at: info@viventiarealtysolutions.com. We will respond within 30 days.`,
+To exercise any of these rights, please contact us at: info@viventiarealty.com. We will respond within 30 days.`,
   },
   {
     title: "10. Cookies and Tracking Technologies",
@@ -144,8 +144,8 @@ However, no method of transmission over the internet is completely secure, and w
 
 **Viventia Realty Solutions**
 Dubai, United Arab Emirates
-Email: info@viventiarealtysolutions.com
-Website: www.viventiarealtysolutions.com
+Email: info@viventiarealty.com
+Website: www.viventiarealty.com
 
 You also have the right to lodge a complaint with the UAE Data Office (dataoffice.gov.ae) if you believe your rights under the PDPL have been infringed.`,
   },

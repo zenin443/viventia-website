@@ -8,7 +8,7 @@ export const metadata = {
 const SECTIONS = [
   {
     title: "1. Acceptance of Terms",
-    body: `By accessing the Viventia Realty Solutions website (viventiarealtysolutions.com) or engaging our real estate consultancy services, you agree to be bound by these Terms of Service ("Terms") and our Privacy Policy.
+    body: `By accessing the Viventia Realty Solutions website (viventiarealty.com) or engaging our real estate consultancy services, you agree to be bound by these Terms of Service ("Terms") and our Privacy Policy.
 
 If you do not agree to these Terms, please do not use our website or services. We reserve the right to amend these Terms at any time. Continued use of our services following such amendments constitutes acceptance of the revised Terms.`,
   },
@@ -125,8 +125,8 @@ Upon termination, all outstanding fees become immediately payable.`,
 
 **Viventia Realty Solutions**
 Dubai, United Arab Emirates
-Email: info@viventiarealtysolutions.com
-Website: www.viventiarealtysolutions.com`,
+Email: info@viventiarealty.com
+Website: www.viventiarealty.com`,
   },
 ];
 
