@@ -203,7 +203,7 @@ export default async function BlogPostPage({
 
         @media (max-width: 900px) {
           .article-body-grid {
-            grid-template-columns: 1fr;
+            grid-template-columns: minmax(0, 1fr);
           }
           .article-sidebar {
             position: static;
